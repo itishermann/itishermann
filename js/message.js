@@ -60,7 +60,7 @@ function send_message() {
     var message = $('#message').val();
 
     var data = {
-        receiver: 'kaohermann@outlook.fr',
+        receiver: '',
         subject: 'Nouveau message depuis votre portfolio',
         body: `num: ${num}, mail: ${mail}, nom: ${nom} ${prenom}, message: ${message}`,
         data: {
