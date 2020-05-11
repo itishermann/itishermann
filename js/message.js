@@ -53,20 +53,18 @@ function switchTheme() {
 
 function send_message() {
     $('#sending').fadeToggle(300);
-    $('#send').fadeToggle(300);
+    $('#send').fadeToggle(100);
     var name = $('#name').val();
     var mail = $('#email').val();
-    var num = $('#phone').val();
     var message = $('#message').val();
 
     var data = {
-        receiver: '',
+        receiver: 'hello@itishermann.me',
         subject: 'Nouveau message depuis votre portfolio',
         body: `num: ${num}, mail: ${mail}, nom: ${nom} ${prenom}, message: ${message}`,
         data: {
             name: name,
             mail: mail,
-            num: num,
             body: message
         }
     };
