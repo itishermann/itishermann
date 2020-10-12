@@ -1,2 +1,3 @@
 User-Agent: *
 Allow: /
+Sitemap: http://itishermann.me/sitemap.xml
