@@ -2,7 +2,7 @@
 
 [![Header](https://raw.githubusercontent.com/itishermann/itishermann/master/readme_header.png "Header")](https://itishermann.me/)
 
-# Hello, folks! <img src="https://raw.githubusercontent.com/itishermann/itishermann/master/wave.gif" width="30px">
+# Hello, folks! 
 
 My name is Hermann Kao and I'm a passionate creator. I'm from Togo, living in France and currently searching for an position as a React-Native Developper. You can find down here.
 
