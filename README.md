@@ -4,7 +4,7 @@
 
 # Hello, folks! 
 
-My name is Hermann Kao and I'm a passionate creator. I'm from Togo, living in France and currently searching for an position as a React-Native Developper. You can find down here.
+My name is Hermann Kao and I'm a passionate creator. I'm from Togo, living in France and currently mobile developer at Nobo.life. You can find down here.
 
 [![](https://img.shields.io/badge/PSN-@itishermann-informational?style=flat&logo=playstation&logoColor=white&color=2bbc8a)](https://my.playstation.com/profile/ItIsHermann/)
 ![](https://img.shields.io/badge/Discord-@ItIsHermann_8771-informational?style=flat&logo=discord&logoColor=white&color=2bbc8a)
@@ -13,7 +13,7 @@ My name is Hermann Kao and I'm a passionate creator. I'm from Togo, living in Fr
 
 ## &#x270d; Blog & Writing
 
-Apart from coding, I also maintain a blog - you can find my articles on my website at [hermann.codes](https://hermann.codes).
+Apart from coding, I also maintain a blog - you can find my articles on my company's website at [Snowtrust's Blog](https://www.snowtrust.fr/blog).
 
 ## 🔧 Technologies & Tools
 ![](https://img.shields.io/badge/OS-Debian_Linux-informational?style=flat&logo=debian&logoColor=white&color=2bbc8a)
