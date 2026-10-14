@@ -58,6 +58,9 @@ basics:
     - network: LinkedIn
       username: itishermann
       url: https://www.linkedin.com/in/itishermann
+    - network: Blog
+      username: itishermann
+      url: https://itishermann.hashnode.dev
 
 work:
   - id: locam
@@ -278,7 +281,7 @@ skills:
     keywords: [Linux (Debian), Bash, ELK, Loki / Grafana, Sentry, CloudWatch]
   - id: ai
     name: { fr: IA appliquée, en: Applied AI }
-    keywords: [Claude Code, agents IA, MCP, Ollama, LLM orchestration]
+    keywords: [Claude Code, AI agents, MCP, Ollama, LLM orchestration]
 
 languages:
   - language: { fr: Français, en: French }

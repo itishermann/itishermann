@@ -3,10 +3,12 @@
   --paper-2: #dde3da;
   --ink: #13202c;
   --muted: #56636d;
-  --rule: #b9c2bb;
+  --rule: #c3cbc4;
   --indigo: #3a3fb0;
+  --indigo-ink: #2c3090;
   --indigo-soft: #c9cbf0;
   --on-indigo: #ffffff;
+  --on-indigo-muted: #d6d8ff;
 
   --font: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', system-ui, sans-serif;
   --step--1: 0.875rem;
@@ -14,9 +16,12 @@
   --step-1: 1.3rem;
   --step-2: 1.75rem;
   --step-3: clamp(2rem, 4vw, 2.75rem);
-  --hello: clamp(3rem, 8.5vw, 7.25rem);
+  --step-4: clamp(2.5rem, 6.5vw, 4.75rem);
+  --hello: clamp(3rem, 7.6vw, 6rem);
   --gutter: clamp(1rem, 5vw, 4rem);
-  --measure: 62ch;
+  --measure: 64ch;
+  --header-h: 3.75rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   color-scheme: light;
 }
 
@@ -26,10 +31,12 @@
     --paper-2: #16212d;
     --ink: #e4e8e1;
     --muted: #9aa6ae;
-    --rule: #2c3a47;
+    --rule: #26333f;
     --indigo: #a3a6ff;
+    --indigo-ink: #c3c5ff;
     --indigo-soft: #2b2f6e;
     --on-indigo: #0e1620;
+    --on-indigo-muted: #2a2f66;
     color-scheme: dark;
   }
 }
@@ -38,13 +45,20 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--rule) var(--paper);
+  accent-color: var(--indigo);
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
+  caret-color: var(--indigo);
   font-family: var(--font);
   font-size: var(--step-0);
   line-height: 1.55;
@@ -52,98 +66,121 @@ body {
   overflow-x: clip;
 }
 
+::selection { background: var(--indigo); color: var(--on-indigo); }
+
 h1, h2, h3 { margin: 0; line-height: 1.1; font-weight: 750; letter-spacing: -0.015em; text-wrap: balance; }
 p { margin: 0; text-wrap: pretty; }
-a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-a:hover { color: var(--indigo); }
-:focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; border-radius: 2px; }
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 0.22em;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+a:hover { color: var(--indigo-ink); text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; border-radius: 3px; }
 
 .skip { position: absolute; left: -999px; }
-.skip:focus { left: var(--gutter); top: 0.5rem; z-index: 10; background: var(--paper); padding: 0.5rem 0.75rem; }
+.skip:focus { left: var(--gutter); top: 0.5rem; z-index: 20; background: var(--paper); padding: 0.5rem 0.75rem; }
 
-/* ---------- Barre du haut ---------- */
+/* ---------- En-tête : reste visible, un filet apparaît dès qu'on a quitté le haut de page ---------- */
 .top {
-  position: absolute; inset: 0 0 auto; z-index: 2;
-  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
-  padding: 1.25rem var(--gutter);
+  position: sticky; top: 0; z-index: 10;
+  height: var(--header-h);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 0 var(--gutter);
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
   font-size: var(--step--1);
 }
+.top a { display: inline-flex; align-items: center; min-height: 44px; }
 .top__name { font-weight: 700; text-decoration: none; }
 .top__nav { display: flex; gap: 1.25rem; }
 
 /* ---------- Premier écran ---------- */
 .hero {
-  position: relative;
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) 1.2fr;
-  align-items: center;
-  gap: clamp(1.5rem, 5vw, 5rem);
-  padding: 5rem var(--gutter) 1.5rem;
+  grid-template-columns: minmax(240px, 0.85fr) 1.15fr;
+  align-items: end;
+  column-gap: clamp(1.5rem, 5vw, 5rem);
+  padding: 0 var(--gutter);
   max-width: 1320px;
   margin-inline: auto;
 }
 
+/* La photo est posée sur le bas de l'écran : on sort du pli, le parcours commence juste dessous. */
 .hero__photo {
-  aspect-ratio: 3 / 4;
-  width: 100%;
-  max-width: 460px;
+  align-self: end;
   justify-self: end;
-  /* Photo détourée : pas de cadre. Fondu en bas et à droite, là où le buste et le bras touchent le bord. */
-  clip-path: circle(85% at 43% 32%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 98%), linear-gradient(to right, #000 80%, transparent 100%);
+  width: min(100%, 520px, 66svh);
+  aspect-ratio: 3 / 4;
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 99%), linear-gradient(to right, #000 82%, transparent 100%);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, #000 66%, transparent 98%), linear-gradient(to right, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 99%), linear-gradient(to right, #000 82%, transparent 100%);
   mask-composite: intersect;
-  will-change: clip-path, transform;
 }
 .hero__photo picture { display: contents; }
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .hero__monogram {
   width: 100%; height: 100%; display: grid; place-items: center;
-  background: linear-gradient(var(--indigo), var(--indigo));
-  color: var(--on-indigo);
+  background: var(--indigo); color: var(--on-indigo);
   font-size: clamp(4rem, 12vw, 9rem); font-weight: 800; letter-spacing: -0.04em;
 }
 
-.hello { display: grid; gap: 0.35em; }
+.hero__text { align-self: center; padding-block: 2rem 0; }
+.hello { display: grid; gap: 0.3em; }
 .hello__main { font-size: var(--hello); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; }
-.hello__other { font-size: calc(var(--hello) * 0.38); font-weight: 400; color: var(--muted); letter-spacing: -0.01em; }
+.hello__other { font-size: calc(var(--hello) * 0.4); font-weight: 400; color: var(--muted); letter-spacing: -0.015em; }
 
-.hero__label { margin-top: 2rem; font-size: var(--step-1); font-weight: 600; }
-.hero__summary { margin-top: 0.9rem; max-width: var(--measure); color: var(--ink); }
-.hero__meta { margin-top: 0.9rem; color: var(--muted); font-size: var(--step--1); }
+.hero__label { margin-top: 2.25rem; font-size: var(--step-1); font-weight: 650; }
+.hero__summary { margin-top: 0.75rem; max-width: var(--measure); }
+.hero__meta { margin-top: 0.75rem; color: var(--muted); font-size: var(--step--1); }
 
 .actions { list-style: none; margin: 2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .btn {
-  display: inline-block; padding: 0.6rem 1rem; border: 1px solid var(--ink); border-radius: 999px;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem;
+  border: 1px solid var(--ink); border-radius: 999px;
   text-decoration: none; font-weight: 600; font-size: var(--step--1);
-  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.15s var(--ease-out);
 }
 .btn:hover { background: var(--ink); color: var(--paper); }
+.btn:active { transform: scale(0.97); }
 .btn--primary { background: var(--indigo); border-color: var(--indigo); color: var(--on-indigo); }
 .btn--primary:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
 .hero__cue {
-  grid-column: 1 / -1; justify-self: center; align-self: end;
-  display: grid; justify-items: center; gap: 0.5rem;
+  min-height: 44px;
+  display: inline-grid; justify-items: start; gap: 0.5rem;
+  margin-top: clamp(2rem, 7vh, 4.5rem);
   font-size: var(--step--1); color: var(--muted); text-decoration: none;
 }
-.hero__cue::after { content: ''; width: 2px; height: 2.75rem; background: linear-gradient(var(--indigo), transparent); }
+.hero__cue::after { content: ''; margin-left: 0.15rem; width: 2px; height: 2.75rem; background: linear-gradient(var(--indigo), transparent); }
 
-/* ---------- Parcours en graphe Git ---------- */
-.work, .block { max-width: 1040px; margin-inline: auto; padding: 0 var(--gutter); }
-.work { padding-top: 6rem; }
-.section-head { display: grid; gap: 0.5rem; margin-bottom: 2.5rem; }
-.section-head h2, .block h2 { font-size: var(--step-3); }
+/* ---------- Parcours : un git log, du plus récent au plus ancien ---------- */
+.work, .block { max-width: 1120px; margin-inline: auto; padding-inline: var(--gutter); }
+.work { padding-top: clamp(4rem, 10vh, 7rem); }
+.section-head { display: grid; gap: 0.6rem; margin-bottom: 3rem; }
+.section-head h2, .block h2 { font-size: var(--step-4); letter-spacing: -0.03em; }
 .section-head p { color: var(--muted); max-width: var(--measure); }
+
+.work__grid { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr; column-gap: clamp(1rem, 3vw, 2.5rem); }
+.clock { position: relative; }
+.clock__year {
+  position: sticky; top: calc(var(--header-h) + 22vh);
+  display: block;
+  font-size: clamp(2.75rem, 5.5vw, 4.75rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--indigo);
+}
 
 .graph { list-style: none; margin: 0; padding: 0; }
 .commit {
   --node-y: 0.85rem;
   display: grid;
   grid-template-columns: calc(var(--lanes) * var(--lane-w)) 1fr;
-  column-gap: clamp(1rem, 3vw, 2.25rem);
+  column-gap: clamp(1rem, 3vw, 2rem);
 }
 .commit__rail { position: relative; }
 .seg {
@@ -161,11 +198,13 @@ a:hover { color: var(--indigo); }
   left: calc(var(--lane) * var(--lane-w) + var(--lane-w) / 2 - 7px);
   width: 14px; height: 14px; border-radius: 50%;
   background: var(--paper); border: 2px solid var(--indigo);
+  transition: background-color 0.3s var(--ease-out), scale 0.3s var(--ease-out);
 }
-.commit:first-child .node { background: var(--indigo); }
+.commit.is-active .node { background: var(--indigo); scale: 1.3; }
 
-.commit__body { padding-bottom: 3rem; max-width: var(--measure); }
-.commit__date { font-size: var(--step--1); color: var(--muted); }
+.commit__body { padding-bottom: 3.25rem; max-width: var(--measure); }
+.commit__date { font-size: var(--step--1); color: var(--muted); transition: color 0.3s; }
+.commit.is-active .commit__date { color: var(--indigo-ink); font-weight: 600; }
 .commit h3 { margin-top: 0.3rem; font-size: var(--step-2); }
 .commit__org { margin-top: 0.4rem; color: var(--muted); }
 .commit__summary { margin-top: 0.9rem; }
@@ -173,54 +212,78 @@ a:hover { color: var(--indigo); }
 .commit__list li::marker { color: var(--indigo); }
 
 /* ---------- Blocs suivants ---------- */
-.block { padding-top: 5rem; }
-.block h2 { margin-bottom: 1.75rem; }
-.skills { margin: 0; display: grid; gap: 1.25rem 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
-.skills dt { font-weight: 700; }
-.skills dd { margin: 0.25rem 0 0; color: var(--muted); }
-.projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.75rem; }
-.projects h3 { font-size: var(--step-1); }
-.projects p { margin-top: 0.3rem; color: var(--muted); max-width: var(--measure); }
-.block--split { display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
-.block--split h2 { font-size: var(--step-2); margin-bottom: 1rem; }
+.block { padding-top: clamp(4rem, 9vh, 6.5rem); }
+.block h2 { margin-bottom: 2rem; }
+
+.skills { margin: 0; border-top: 1px solid var(--rule); }
+.skills__row {
+  display: grid; grid-template-columns: minmax(10rem, 16rem) 1fr; gap: 0.5rem 2rem;
+  padding: 1.15rem 0; border-bottom: 1px solid var(--rule);
+}
+.skills dt { font-weight: 700; padding-top: 0.2rem; }
+.skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: 0.15rem 1.35rem; font-size: var(--step-1); font-weight: 500; letter-spacing: -0.01em; }
+
+.projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.25rem 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.projects h3 { font-size: var(--step-2); }
+.projects p { margin-top: 0.4rem; color: var(--muted); max-width: var(--measure); }
+.projects .projects__stack { margin-top: 0.6rem; color: var(--indigo-ink); font-size: var(--step--1); font-weight: 600; }
+
+.block--split { display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.block--split h2 { font-size: var(--step-3); margin-bottom: 1.25rem; }
 .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
 
-.foot {
-  max-width: 1040px; margin: 7rem auto 0; padding: 3rem var(--gutter) 4rem;
-  border-top: 1px solid var(--rule);
-  display: grid; gap: 1rem; color: var(--muted); font-size: var(--step--1);
-}
-.foot__cta { font-size: var(--step-3); font-weight: 750; color: var(--ink); letter-spacing: -0.02em; }
-.foot__cta a { text-decoration: none; }
+/* ---------- Contact : le seul aplat de couleur de la page ---------- */
+.contact { margin-top: clamp(5rem, 12vh, 8rem); background: var(--indigo); color: var(--on-indigo); }
+.contact__inner { max-width: 1120px; margin-inline: auto; padding: clamp(3.5rem, 10vh, 6rem) var(--gutter) 3rem; display: grid; gap: 1rem; }
+.contact h2 { font-size: var(--step-4); letter-spacing: -0.03em; }
+.contact__lead { font-size: var(--step-1); }
+.contact__mail { margin-top: 1rem; font-size: clamp(1.6rem, 5.2vw, 4rem); font-weight: 750; letter-spacing: -0.03em; line-height: 1.05; overflow-wrap: anywhere; }
+.contact__mail a { text-decoration-thickness: 2px; text-underline-offset: 0.12em; }
+.contact a:hover { color: inherit; text-decoration-color: currentColor; }
+.contact__cv { margin-top: 0.5rem; }
+.contact__source { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid color-mix(in srgb, var(--on-indigo) 30%, transparent); font-size: var(--step--1); color: color-mix(in srgb, var(--on-indigo) 82%, var(--indigo)); }
+.contact :focus-visible { outline-color: var(--on-indigo); }
+.contact ::selection { background: var(--on-indigo); color: var(--indigo); }
 
-/* ---------- Mobile ---------- */
+/* ---------- Tablette et mobile ---------- */
+@media (max-width: 900px) {
+  /* Sur petit écran, les dates écrites à côté de chaque poste suffisent ; le commit actif reste mis en avant. */
+  .work__grid { grid-template-columns: 1fr; }
+  .clock { display: none; }
+}
 @media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; align-content: start; padding-top: 4.5rem; gap: 1.75rem; }
-  .hero__photo { justify-self: start; width: 58%; max-width: 260px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 1rem; }
+  .hero__photo { order: -1; justify-self: start; width: min(64%, 280px); }
+  .hero__text { padding-top: 1.5rem; }
   .hero__cue { display: none; }
-  .work { padding-top: 3rem; }
   .commit { --lane-w: 14px; }
+  .skills__row { grid-template-columns: 1fr; }
+  .skills dd { font-size: var(--step-0); }
 }
 
 /* ---------- Mouvement ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  /* Un seul moment au chargement : la salutation dans l'autre langue arrive après la principale. */
-  .hello__main, .hello__other, .hero__photo { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.1, 1) both; }
-  .hello__other { animation-delay: 0.35s; }
-  .hero__photo { animation-name: reveal; animation-duration: 0.9s; }
-  @keyframes rise { from { opacity: 0; transform: translateY(0.35em); } }
-  @keyframes reveal { from { clip-path: circle(0% at 43% 32%); } }
+  /* Arrivée : la photo monte depuis le pli, puis la salutation, puis l'autre langue. */
+  .hero__photo { animation: emerge 0.9s var(--ease-out) both; }
+  .hello__main, .hello__other { animation: rise 0.7s var(--ease-out) both; }
+  .hello__main { animation-delay: 0.12s; }
+  .hello__other { animation-delay: 0.45s; }
+  @keyframes emerge { from { opacity: 0; transform: translateY(6%); filter: blur(6px); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(0.3em); } }
 
   @supports (animation-timeline: view()) {
     /* Les timelines sont déclarées dans des règles séparées : le minifieur fusionne sinon tout
        dans le raccourci `animation`, où Chrome n'accepte pas de timeline. */
 
-    /* En quittant l'écran, le portrait se resserre en cercle : il devient le premier nœud du graphe. */
-    .hero__photo { animation: reveal 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both, to-node linear both; }
-    .hero .hero__photo { animation-timeline: auto, view(); animation-range: normal, exit 0% exit 90%; }
-    @keyframes to-node {
-      to { clip-path: circle(21% at 43% 32%); background-color: var(--paper-2); transform: translateY(30%) scale(0.75); opacity: 0.4; }
-    }
+    /* Le filet de l'en-tête apparaît dès qu'on quitte le haut de page. */
+    .top { animation: header-rule linear both; }
+    body .top { animation-timeline: scroll(root); animation-range: 0 120px; }
+    @keyframes header-rule { to { border-bottom-color: var(--rule); } }
+
+    /* En sortant de l'écran, la photo s'efface doucement derrière le parcours. */
+    .hero__photo { animation: emerge 0.9s var(--ease-out) both, recede linear both; }
+    .hero .hero__photo { animation-timeline: auto, view(); animation-range: normal, exit 0% exit 100%; }
+    @keyframes recede { to { opacity: 0.15; transform: translateY(8%) scale(0.96); filter: grayscale(1); } }
 
     /* Les branches se tracent au fil du scroll. */
     .seg, .node { animation: draw linear both; }
