@@ -29,7 +29,10 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
 
   <header class="top">
     <a class="top__logo" href={home} aria-label="Hermann Kao">hermann<span>.</span></a>
-    <nav class="top__nav" aria-label="Sections">
+    <button class="top__toggle" type="button" aria-expanded="false" aria-controls="sections" aria-label={L.menu} data-nav-toggle>
+      <span class="top__burger" aria-hidden="true"></span>
+    </button>
+    <nav class="top__nav" id="sections" aria-label="Sections">
       <a href={home} data-spy="top">{L.nav.home}</a>
       <a href={`#${ids.work}`} data-spy={ids.work}>{L.nav.work}</a>
       <a href={`#${ids.skills}`} data-spy={ids.skills}>{L.nav.skills}</a>
@@ -96,6 +99,7 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
         <p class="eyebrow">{L.eyebrow.work}</p>
         <h2 id="work-title">{L.workTitle}</h2>
         <p class="section__lead">{L.workIntro}</p>
+        <p class="graph-key"><span class="graph-key__glyph" aria-hidden="true"><span></span><span></span><i></i></span>{L.graphKey}</p>
       </div>
 
       <div class="work__grid">
@@ -155,8 +159,8 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
       </div>
       <ul class="projects">
         {cv.projects.map((p: any) => (
-          <li>
-            <h3>{p.url ? <a href={p.url}>{t(p.name, lang)}</a> : t(p.name, lang)}</h3>
+          <li class:list={[{ 'is-link': !!p.url }]}>
+            <h3>{p.url ? <a href={p.url} rel="noopener">{t(p.name, lang)}</a> : t(p.name, lang)}</h3>
             <p>{t(p.description, lang)}</p>
             {p.keywords?.length > 0 && <p class="projects__stack">{p.keywords.join(', ')}</p>}
           </li>
@@ -195,6 +199,11 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
     </div>
     <p class="contact__source">{L.footer} <a href="https://github.com/itishermann/itishermann/blob/master/data/cv.yaml">{L.source}</a></p>
   </footer>
+
+  <nav class="dock" aria-label={L.quickActions} data-dock>
+    <a class="dock__cv" href={resumeHref(lang)} download>{L.resumeShort}</a>
+    <a class="dock__contact" href={`#${ids.contact}`}>{L.nav.contact}</a>
+  </nav>
 
   <script>
     const calm = matchMedia('(prefers-reduced-motion: reduce)');
@@ -241,5 +250,31 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
       }
     }, { rootMargin: '-40% 0px -55% 0px' });
     document.querySelectorAll('[data-section]').forEach((s) => navIo.observe(s));
+
+    // Menu de sections sur mobile : le bouton ouvre le panneau, Échap ou un clic dehors le ferme.
+    const top = document.querySelector<HTMLElement>('.top');
+    const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+    const panel = document.getElementById('sections');
+    if (top && toggle && panel) {
+      const setNav = (open: boolean) => {
+        top.classList.toggle('is-nav-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      };
+      toggle.addEventListener('click', () => setNav(!top.classList.contains('is-nav-open')));
+      panel.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setNav(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && top.classList.contains('is-nav-open')) { setNav(false); toggle.focus(); } });
+      document.addEventListener('click', (e) => { if (top.classList.contains('is-nav-open') && !top.contains(e.target as Node)) setNav(false); });
+    }
+
+    // Accès rapide flottant : apparaît une fois le hero passé, se retire sur la section contact.
+    const dock = document.querySelector<HTMLElement>('.dock');
+    const heroEl = document.querySelector('.hero');
+    const contactEl = document.querySelector('.contact');
+    if (dock && heroEl) {
+      let pastHero = false, atContact = false;
+      const sync = () => dock.classList.toggle('is-shown', pastHero && !atContact);
+      new IntersectionObserver((es) => { for (const e of es) pastHero = !e.isIntersecting; sync(); }, { rootMargin: '-15% 0px 0px 0px' }).observe(heroEl);
+      if (contactEl) new IntersectionObserver((es) => { for (const e of es) atContact = e.isIntersecting; sync(); }).observe(contactEl);
+    }
   </script>
 </Base>
