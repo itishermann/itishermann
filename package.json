@@ -1,0 +1,28 @@
+{
+  "name": "itishermann",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "dev": "astro dev",
+    "build:site": "astro build",
+    "build:cv": "node scripts/build-cv.mjs",
+    "check:ats": "node scripts/check-ats.mjs",
+    "build": "npm run validate && npm run build:cv && npm run build:site && npm run check:ats",
+    "tailor": "node scripts/tailor.mjs",
+    "preview": "astro preview"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/schibsted-grotesk": "^5.3.0",
+    "astro": "^7.3.8",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+cv/build/
+# PDF générés au build (la CI les publie avec le site)
+public/cv/
+.DS_Store
+variants/
+out/

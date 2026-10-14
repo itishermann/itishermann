@@ -1,0 +1,140 @@
+---
+import Base from '../layouts/Base.astro';
+import { cv, t, ui, graph, range, photoExists, resumeHref, type Lang } from '../lib/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const other: Lang = lang === 'fr' ? 'en' : 'fr';
+const L = ui[lang];
+const b = cv.basics;
+const { rows, lanes } = graph();
+const LANE_W = 18;
+const github = (b.profiles || []).find((p: any) => p.network === 'GitHub');
+const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
+---
+<Base lang={lang}>
+  <a class="skip" href="#parcours">{L.scroll}</a>
+
+  <header class="top">
+    <a class="top__name" href={lang === 'fr' ? '/' : '/en/'}>Hermann Kao</a>
+    <nav class="top__nav" aria-label={lang === 'fr' ? 'Liens' : 'Links'}>
+      <a href={L.otherHref} hreflang={other} lang={other}>{L.otherLang}</a>
+      <a href={resumeHref(lang)} download>{L.resumeShort}</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hello">
+      <div class="hero__photo">
+        {photoExists
+          ? <picture>
+              <source srcset={b.photo.replace(/\.(jpe?g|png)$/, '.webp')} type="image/webp" />
+              <img src={b.photo} alt={L.photoAlt} width="900" height="1200" fetchpriority="high" decoding="async" />
+            </picture>
+          : <div class="hero__monogram" role="img" aria-label={L.photoAlt}><span>HK</span></div>}
+      </div>
+
+      <div class="hero__text">
+        <h1 id="hello" class="hello">
+          <span class="hello__main">{t(b.greeting, lang)}</span>
+          <span class="hello__other" lang={other}>{t(b.greeting, other)}</span>
+        </h1>
+        <p class="hero__label">{t(b.label, lang)}</p>
+        <p class="hero__summary">{t(b.summary, lang)}</p>
+        <p class="hero__meta">{b.location.city}, France. {t(b.remote, lang)}.</p>
+        <ul class="actions">
+          <li><a class="btn btn--primary" href={resumeHref(lang)} download>{L.resume}</a></li>
+          <li><a class="btn" href={`mailto:${b.email}`}>{L.email}</a></li>
+          {github && <li><a class="btn" href={github.url} rel="me">GitHub</a></li>}
+          {linkedin && <li><a class="btn" href={linkedin.url} rel="me">LinkedIn</a></li>}
+        </ul>
+      </div>
+
+      <a class="hero__cue" href="#parcours">{L.scroll}</a>
+    </section>
+
+    <section id="parcours" class="work" aria-labelledby="work-title" style={`--lanes:${lanes};--lane-w:${LANE_W}px`}>
+      <div class="section-head">
+        <h2 id="work-title">{L.work}</h2>
+        <p>{L.workIntro}</p>
+      </div>
+
+      <ol class="graph">
+        {rows.map((row) => {
+          const w = row.item;
+          return (
+            <li class="commit" style={`--lane:${row.lane}`}>
+              <div class="commit__rail" aria-hidden="true">
+                {row.above.map((on, l) => on && <span class="seg seg--top" style={`--l:${l}`} />)}
+                {row.below.map((on, l) => on && <span class="seg seg--bottom" style={`--l:${l}`} />)}
+                <span class="node" />
+              </div>
+              <article class="commit__body">
+                <p class="commit__date">
+                  <time datetime={w.start}>{range(w.start, w.end, lang)}</time>
+                </p>
+                <h3>{t(w.position, lang)}</h3>
+                <p class="commit__org">
+                  {t(w.organization, lang)}
+                  {w.contract && <><br />{t(w.contract, lang)}{w.location && `, ${t(w.location, lang)}`}</>}
+                </p>
+                {w.summary && <p class="commit__summary">{t(w.summary, lang)}</p>}
+                {w.highlights?.length > 0 && (
+                  <ul class="commit__list">
+                    {w.highlights.map((h: any) => <li>{h[lang]}</li>)}
+                  </ul>
+                )}
+              </article>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+
+    <section class="block" aria-labelledby="skills-title">
+      <h2 id="skills-title">{L.skills}</h2>
+      <dl class="skills">
+        {cv.skills.map((s: any) => (
+          <div>
+            <dt>{t(s.name, lang)}</dt>
+            <dd>{s.keywords.join(', ')}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="block" aria-labelledby="projects-title">
+      <h2 id="projects-title">{L.projects}</h2>
+      <ul class="projects">
+        {cv.projects.map((p: any) => (
+          <li>
+            <h3>{p.url ? <a href={p.url}>{t(p.name, lang)}</a> : t(p.name, lang)}</h3>
+            <p>{t(p.description, lang)}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="block block--split" aria-labelledby="edu-title">
+      <div>
+        <h2 id="edu-title">{L.education}</h2>
+        <ul class="plain">
+          {cv.education.map((e: any) => (
+            <li><strong>{t(e.studyType, lang)}, {t(e.area, lang)}</strong><br />{e.institution}, {e.location}, {e.end}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2>{L.languages}</h2>
+        <ul class="plain">
+          {cv.languages.map((l: any) => <li><strong>{t(l.language, lang)}</strong>, {t(l.fluency, lang)}</li>)}
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot__cta"><a href={`mailto:${b.email}`}>{b.email}</a></p>
+    <p>{L.footer} <a href="https://github.com/itishermann/itishermann/blob/master/data/cv.yaml">{L.source}</a></p>
+  </footer>
+</Base>
