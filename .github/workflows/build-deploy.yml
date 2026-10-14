@@ -62,6 +62,16 @@ jobs:
           name: cv-pdf
           path: dist/cv/*.pdf
 
+      # Crée le projet Pages au premier passage ; sans effet s'il existe déjà.
+      - name: Projet Cloudflare Pages
+        if: ${{ env.HAS_CLOUDFLARE == 'true' && github.event_name != 'pull_request' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create itishermann --production-branch=master
+        continue-on-error: true
+
       - name: Déployer sur Cloudflare Pages
         if: ${{ env.HAS_CLOUDFLARE == 'true' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}
         id: deploy
