@@ -1,0 +1,58 @@
+name: Site et CV
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: '0.14'
+
+      - name: Outils PDF (pdftotext)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - run: npm ci
+
+      # Valide cv.yaml, génère les PDF FR/EN, construit le site, puis vérifie
+      # que tout le texte des PDF est extractible (contrôle ATS).
+      - run: npm run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: dist/cv/*.pdf
+
+      - name: Déployer sur Cloudflare Pages
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=itishermann --branch=${{ github.head_ref || github.ref_name }} --commit-dirty=true
+
+      - name: Lien de prévisualisation
+        if: ${{ github.event_name == 'pull_request' && steps.deploy.outputs.deployment-url != '' }}
+        run: echo "Prévisualisation : ${{ steps.deploy.outputs.deployment-url }}" >> "$GITHUB_STEP_SUMMARY"

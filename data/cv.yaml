@@ -1,0 +1,323 @@
+# yaml-language-server: $schema=../schema/cv.schema.json
+#
+# Source unique du portfolio (itishermann.me) et des CV PDF (FR + EN).
+# Toute modification de ce fichier sur `master` reconstruit le site et les PDF.
+# Les agents IA doivent lire AGENTS.md avant de dériver un CV ciblé.
+#
+# Conventions
+# - Tout texte affiché est un objet { fr, en }.
+# - Les clients finaux ne sont jamais nommés : on les décrit (secteur, taille).
+# - `tags` sert au filtrage par cible (devops, mobile, web, backend, ia, lead...).
+# - `cv: false` masque un élément du CV PDF généré par défaut (il reste sur le site).
+# - Dates au format YYYY-MM. `end` absent = poste en cours.
+
+meta:
+  version: 1
+  updated: "2026-10-14"
+  site: https://itishermann.me
+
+basics:
+  name: Hermann Kao
+  label:
+    fr: Développeur fullstack JavaScript / TypeScript, orienté DevOps
+    en: Fullstack JavaScript / TypeScript developer with a DevOps focus
+  greeting:
+    fr: Salut, moi c'est Hermann.
+    en: Hi, I'm Hermann.
+  email: itishermann@gmail.com
+  website: https://itishermann.me
+  photo: /photo.jpg
+  location:
+    city: Saint-Étienne
+    region: Auvergne-Rhône-Alpes
+    countryCode: FR
+  availability:
+    fr: En mission. Ouvert aux échanges pour la suite.
+    en: Currently on assignment. Open to talk about what's next.
+  remote:
+    fr: Hybride à Saint-Étienne ou full remote
+    en: Hybrid in Saint-Étienne or fully remote
+  summary:
+    fr: >-
+      Je développe des applications web et mobiles en TypeScript depuis 2020, et
+      je m'occupe aussi de ce qui tourne en dessous : CI/CD, Kubernetes, AWS,
+      supervision. J'ai souvent été le seul technique d'un produit, du backend à
+      l'app mobile en passant par l'infra. Depuis 2025, j'intègre des agents IA
+      dans les chaînes de livraison, du ticket jusqu'à la pull request testée.
+    en: >-
+      I have been building web and mobile apps in TypeScript since 2020, and I
+      also take care of what runs underneath: CI/CD, Kubernetes, AWS and
+      monitoring. I have often been the only engineer on a product, covering the
+      backend, the mobile app and the infrastructure. Since 2025 I have been
+      wiring AI agents into delivery pipelines, from the ticket to a tested pull
+      request.
+  profiles:
+    - network: GitHub
+      username: itishermann
+      url: https://github.com/itishermann
+    - network: LinkedIn
+      username: itishermann
+      url: https://www.linkedin.com/in/itishermann
+
+work:
+  - id: locam
+    position:
+      fr: Intégrateur applicatif et DevOps
+      en: Application integrator and DevOps engineer
+    organization:
+      fr: Société de financement d'équipements B2B (groupe financier)
+      en: B2B equipment financing company (financial group)
+    contract:
+      fr: Freelance, portage salarial
+      en: Freelance (umbrella company)
+    location: Saint-Étienne
+    start: 2026-08
+    tags: [devops, integration, backend]
+    summary:
+      fr: >-
+        Au sein de la DSI, dans l'équipe d'intégration qui accompagne le
+        remplacement d'un système AS400 par un ERP développé sur mesure par un
+        prestataire.
+      en: >-
+        Part of the IT department's integration team, supporting the replacement
+        of an AS400 system with a custom ERP built by an external vendor.
+    highlights:
+      - fr: Gestion de l'API manager et des connexions aux services externes.
+        en: Run the API manager and the connections to external services.
+        tags: [integration, api]
+      - fr: Accompagnement de la migration de l'AS400 vers le nouvel ERP côté intégration.
+        en: Support the AS400 to ERP migration on the integration side.
+        tags: [integration]
+
+  - id: versusmind
+    position:
+      fr: Développeur fullstack
+      en: Fullstack developer
+    organization:
+      fr: Versusmind, ESN (Nancy)
+      en: Versusmind, IT services company (Nancy)
+    contract:
+      fr: Freelance, puis portage salarial
+      en: Freelance, then umbrella company
+    location:
+      fr: Télétravail
+      en: Remote
+    start: 2025-07
+    end: 2026-09
+    tags: [web, backend, devops, ia]
+    highlights:
+      - fr: Refonte du site d'un équipementier télécom international, de Sitecore vers Next.js et Payload CMS.
+        en: Rebuilt an international telecom equipment maker's website, moving from Sitecore to Next.js and Payload CMS.
+        tags: [web, nextjs, cms]
+      - fr: TMA Sitecore XP 10 / SXA pour une fédération professionnelle nationale du bâtiment.
+        en: Maintenance of a Sitecore XP 10 / SXA platform for a national construction trade federation.
+        tags: [web, cms, dotnet]
+      - fr: TMA WordPress et PrestaShop pour un e-commerçant du vitrage, dont l'administration du serveur (Debian, Cloudflare Tunnels, durcissement SSH).
+        en: WordPress and PrestaShop maintenance for a glazing e-retailer, including server administration (Debian, Cloudflare Tunnels, SSH hardening).
+        tags: [web, php, linux, devops]
+      - fr: Mise en place d'une CI/CD de déploiement automatisé pour une application Flutter.
+        en: Set up automated CI/CD deployment for a Flutter application.
+        tags: [devops, mobile, cicd]
+      - fr: Participation à un projet interne d'orchestration d'agents IA.
+        en: Contributed to an internal AI agent orchestration project.
+        tags: [ia]
+      - fr: Création d'un outillage de développement local WordPress (Makefile, skills MCP, commandes pour agents).
+        en: Built a local WordPress development toolkit (Makefile, MCP skills, agent commands).
+        tags: [tooling, ia, php]
+        cv: false
+
+  - id: the-after-cancer
+    position:
+      fr: Développeur mobile, puis fullstack, puis architecte logiciel
+      en: Mobile developer, then fullstack developer, then software architect
+    organization:
+      fr: The After Cancer, application d'accompagnement santé (Portugal)
+      en: The After Cancer, health support app (Portugal)
+    contract:
+      fr: Freelance
+      en: Freelance
+    location:
+      fr: Télétravail
+      en: Remote
+    start: 2025-04
+    tags: [mobile, backend, devops, aws, ia, lead]
+    summary:
+      fr: >-
+        Recruté pour l'application mobile, j'ai repris ensuite le backend et
+        l'infrastructure. Je suis aujourd'hui le seul technique du produit :
+        mobile, backend, backoffice, landing, infra et données.
+      en: >-
+        Hired for the mobile app, I later took over the backend and the
+        infrastructure. I am now the product's only engineer: mobile, backend,
+        back office, landing page, infrastructure and data.
+    highlights:
+      - fr: Application React Native (Expo) avec OneSignal, CometChat, Google Calendar et l'intégration de Healthie, fournisseur de données de santé.
+        en: React Native (Expo) app with OneSignal, CometChat, Google Calendar and an integration with Healthie, a health data provider.
+        tags: [mobile, react-native]
+      - fr: Architecture AWS (EC2, IAM, logs) et API Gateway devant les prestataires externes (CometChat, Stripe, OneSignal, Healthie).
+        en: AWS architecture (EC2, IAM, logging) with an API Gateway in front of external providers (CometChat, Stripe, OneSignal, Healthie).
+        tags: [aws, devops, backend, api]
+      - fr: Chaîne Notion vers GitHub pilotée par Claude Code. Un agent lit le ticket, pose ses questions dans Notion et ouvre une PR avec ses tests. La fusion reste validée par un humain.
+        en: Notion to GitHub pipeline driven by Claude Code. An agent reads the ticket, asks its questions in Notion and opens a pull request with tests. A human still approves every merge.
+        tags: [ia, cicd, lead]
+      - fr: Environnement de recette éphémère créé sur AWS pour chaque PR, supprimé au bout de 3 jours.
+        en: Ephemeral review environment created on AWS for each pull request, removed after 3 days.
+        tags: [aws, devops, cicd]
+
+  - id: freelance-short
+    position:
+      fr: Développeur freelance
+      en: Freelance developer
+    organization:
+      fr: Missions courtes pour des startups et studios
+      en: Short assignments for startups and studios
+    contract:
+      fr: Freelance
+      en: Freelance
+    start: 2023-01
+    end: 2024-12
+    tags: [web, mobile]
+    # TODO(hermann) : décrire ces missions (sans nommer les clients).
+    highlights: []
+
+  - id: nobo
+    position:
+      fr: Développeur fullstack et DevOps
+      en: Fullstack and DevOps developer
+    organization:
+      fr: Nobo, service de ménage à domicile (groupe Palladium)
+      en: Nobo, home cleaning service (Palladium group)
+    contract:
+      fr: Alternance, puis freelance
+      en: Work-study, then freelance
+    location: Boulogne-Billancourt
+    start: 2021-08
+    end: 2025-11
+    tags: [mobile, devops, kubernetes, backend]
+    highlights:
+      - fr: Migration du déploiement vers Argo CD sur GKE, gestion de Google Cloud et des serveurs OVH.
+        en: Moved deployments to Argo CD on GKE and managed Google Cloud and OVH servers.
+        tags: [devops, kubernetes, gcp]
+      - fr: Migration de deux applications React Native d'un monorepo Expo 52 vers deux apps Expo 57 indépendantes, en architecture hexagonale.
+        en: Migrated two React Native apps from an Expo 52 monorepo to two independent Expo 57 apps with a hexagonal architecture.
+        tags: [mobile, react-native, architecture]
+      - fr: File d'attente SQLite hors ligne pour fiabiliser la validation des prestations, qui déclenche la facturation.
+        en: Offline SQLite outbox so that service validation, which triggers billing, survives poor connectivity.
+        tags: [mobile, architecture]
+
+  - id: snowtrust
+    position:
+      fr: Administrateur système
+      en: System administrator
+    organization:
+      fr: Snowtrust (Limoges)
+      en: Snowtrust (Limoges)
+    contract:
+      fr: Freelance
+      en: Freelance
+    start: 2021-04
+    end: 2022-10
+    tags: [linux, devops]
+    # TODO(hermann) : préciser les missions.
+    highlights: []
+
+  - id: nobo-internship
+    position:
+      fr: Stagiaire développeur fullstack et DevOps
+      en: Fullstack and DevOps intern
+    organization:
+      fr: Nobo (groupe Palladium)
+      en: Nobo (Palladium group)
+    contract:
+      fr: Stage
+      en: Internship
+    location: Boulogne-Billancourt
+    start: 2020-04
+    end: 2020-09
+    tags: [devops, cicd]
+    highlights:
+      - fr: Mise en place du déploiement automatisé avec tests sur Bitbucket et Jenkins.
+        en: Set up automated, tested deployments with Bitbucket and Jenkins.
+        tags: [cicd, devops]
+
+education:
+  - institution: ETNA
+    location: Paris
+    studyType:
+      fr: Master of Science
+      en: Master of Science
+    area:
+      fr: Architecte logiciel, développeur d'application
+      en: Software architect, application developer
+    end: 2024
+  - institution: ETNA
+    location: Paris
+    studyType:
+      fr: Bachelor
+      en: Bachelor's degree
+    area:
+      fr: Responsable de projets web et mobile
+      en: Web and mobile project manager
+    end: 2022
+
+skills:
+  - id: frontend
+    name: { fr: Front-end et mobile, en: Front-end and mobile }
+    keywords: [TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI]
+  - id: backend
+    name: { fr: Back-end, en: Back-end }
+    keywords: [Node.js, PHP, Python, .NET, REST, RabbitMQ, Pub/Sub, PostgreSQL, MySQL]
+  - id: cms
+    name: { fr: CMS et e-commerce, en: CMS and e-commerce }
+    keywords: [Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop]
+  - id: devops
+    name: { fr: DevOps et cloud, en: DevOps and cloud }
+    keywords: [Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, AWS, Google Cloud, OVH, Cloudflare]
+  - id: ops
+    name: { fr: Systèmes et supervision, en: Systems and monitoring }
+    keywords: [Linux (Debian), Bash, ELK, Loki / Grafana, Sentry, CloudWatch]
+  - id: ai
+    name: { fr: IA appliquée, en: Applied AI }
+    keywords: [Claude Code, agents IA, MCP, Ollama, LLM orchestration]
+
+languages:
+  - language: { fr: Français, en: French }
+    fluency: { fr: courant, en: fluent }
+  - language: { fr: Anglais, en: English }
+    fluency: { fr: "professionnel, TOEIC 925/990", en: "professional, TOEIC 925/990" }
+
+certificates:
+  - name: { fr: McKinsey Forward (formation en ligne), en: McKinsey Forward (online program) }
+  - name: { fr: "ISC2 Certified in Cybersecurity (formation suivie)", en: "ISC2 Certified in Cybersecurity (training completed)" }
+    cv: false
+
+projects:
+  - id: career-hub
+    name: career-hub
+    description:
+      fr: Génération de CV ciblés par LLM, avec rendu PDF en Typst et recherche sémantique sur pgvector.
+      en: LLM-generated targeted resumes, rendered to PDF with Typst, with semantic search on pgvector.
+    keywords: [LLM, Typst, pgvector]
+    tags: [ia, backend]
+  - id: agent-kanban
+    name: { fr: Kanban d'orchestration d'agents, en: Agent orchestration kanban }
+    description:
+      fr: Application de bureau Tauri pour piloter plusieurs sessions Claude Code depuis un tableau kanban.
+      en: Tauri desktop app to run several Claude Code sessions from a kanban board.
+    keywords: [Tauri, Claude Code]
+    tags: [ia, tooling]
+  - id: eclore
+    name: Éclore
+    description:
+      fr: Application iOS d'aide à l'arrêt du tabac et du cannabis, conçue pour ne jamais culpabiliser.
+      en: iOS app that helps people quit smoking and cannabis, designed to never shame the user.
+    keywords: [SwiftUI, SwiftData]
+    tags: [mobile]
+  - id: home-ai
+    name: { fr: Infrastructure IA auto-hébergée, en: Self-hosted AI infrastructure }
+    description:
+      fr: Inférence locale avec Ollama sur GPU, routée via Tailscale, services déployés avec Dokploy derrière Cloudflare Tunnel.
+      en: Local inference with Ollama on a GPU, routed over Tailscale, with services deployed through Dokploy behind Cloudflare Tunnel.
+    keywords: [Ollama, Tailscale, Dokploy, Cloudflare]
+    tags: [ia, devops]
+    cv: false

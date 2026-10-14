@@ -1,0 +1,63 @@
+---
+import '@fontsource-variable/schibsted-grotesk';
+import '../styles/global.css';
+import { cv, t, ui, photoExists, type Lang } from '../lib/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const b = cv.basics;
+const label = t(b.label, lang);
+const title = `${b.name}, ${label}`;
+const description = ui[lang].description(label);
+const site = Astro.site!.toString().replace(/\/$/, '');
+const canonical = lang === 'fr' ? `${site}/` : `${site}/en/`;
+const ogImage = `${site}/og.png`;
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: b.name,
+  jobTitle: label,
+  description: t(b.summary, lang),
+  url: site,
+  email: `mailto:${b.email}`,
+  image: photoExists ? `${site}${b.photo}` : undefined,
+  address: { '@type': 'PostalAddress', addressLocality: b.location.city, addressRegion: b.location.region, addressCountry: b.location.countryCode },
+  sameAs: (b.profiles || []).map((p: any) => p.url),
+  alumniOf: [...new Set(cv.education.map((e: any) => e.institution))].map((name) => ({ '@type': 'CollegeOrUniversity', name })),
+  knowsAbout: cv.skills.flatMap((s: any) => s.keywords),
+  knowsLanguage: ['fr', 'en'],
+};
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={`${site}/`} />
+    <link rel="alternate" hreflang="en" href={`${site}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#E8ECE5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0E1620" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    <meta property="profile:first_name" content="Hermann" />
+    <meta property="profile:last_name" content="Kao" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/json" href="/cv.json" title="CV (JSON)" />
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

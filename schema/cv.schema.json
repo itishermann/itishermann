@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://itishermann.me/cv.schema.json",
+  "title": "CV bilingue d'Hermann Kao",
+  "description": "Source unique du portfolio et des CV PDF. Inspiré de JSON Resume, avec des textes bilingues { fr, en }, des tags de ciblage et un drapeau `cv` pour masquer un élément du PDF.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "basics", "work", "education", "skills"],
+  "$defs": {
+    "i18n": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fr", "en"],
+      "properties": {
+        "fr": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 }
+      }
+    },
+    "text": {
+      "description": "Chaîne identique dans les deux langues, ou objet { fr, en }.",
+      "oneOf": [{ "type": "string", "minLength": 1 }, { "$ref": "#/$defs/i18n" }]
+    },
+    "month": { "type": "string", "pattern": "^\\d{4}-(0[1-9]|1[0-2])$" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "uniqueItems": true
+    },
+    "visible": {
+      "type": "boolean",
+      "description": "false = absent du CV PDF par défaut (reste sur le site)."
+    },
+    "highlight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fr", "en"],
+      "properties": {
+        "fr": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 },
+        "tags": { "$ref": "#/$defs/tags" },
+        "cv": { "$ref": "#/$defs/visible" }
+      }
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "updated"],
+      "properties": {
+        "version": { "type": "integer" },
+        "updated": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "site": { "type": "string", "format": "uri" },
+        "target": {
+          "type": "string",
+          "description": "Rempli par un agent pour un CV dérivé : intitulé de l'offre ou contexte visé."
+        }
+      }
+    },
+    "basics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "label", "greeting", "email", "summary", "location"],
+      "properties": {
+        "name": { "type": "string" },
+        "label": { "$ref": "#/$defs/i18n" },
+        "greeting": { "$ref": "#/$defs/i18n" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "website": { "type": "string", "format": "uri" },
+        "photo": { "type": "string" },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["city", "countryCode"],
+          "properties": {
+            "city": { "type": "string" },
+            "region": { "type": "string" },
+            "countryCode": { "type": "string", "pattern": "^[A-Z]{2}$" }
+          }
+        },
+        "availability": { "$ref": "#/$defs/i18n" },
+        "remote": { "$ref": "#/$defs/i18n" },
+        "summary": { "$ref": "#/$defs/i18n" },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["network", "url"],
+            "properties": {
+              "network": { "type": "string" },
+              "username": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    },
+    "work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "position", "organization", "start", "highlights"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "position": { "$ref": "#/$defs/i18n" },
+          "organization": { "$ref": "#/$defs/text" },
+          "contract": { "$ref": "#/$defs/text" },
+          "location": { "$ref": "#/$defs/text" },
+          "start": { "$ref": "#/$defs/month" },
+          "end": { "$ref": "#/$defs/month" },
+          "tags": { "$ref": "#/$defs/tags" },
+          "summary": { "$ref": "#/$defs/i18n" },
+          "highlights": { "type": "array", "items": { "$ref": "#/$defs/highlight" } },
+          "cv": { "$ref": "#/$defs/visible" }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["institution", "studyType", "area"],
+        "properties": {
+          "institution": { "type": "string" },
+          "location": { "type": "string" },
+          "studyType": { "$ref": "#/$defs/text" },
+          "area": { "$ref": "#/$defs/text" },
+          "start": { "type": "integer" },
+          "end": { "type": "integer" }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "keywords"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "$ref": "#/$defs/i18n" },
+          "keywords": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "cv": { "$ref": "#/$defs/visible" }
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["language", "fluency"],
+        "properties": {
+          "language": { "$ref": "#/$defs/i18n" },
+          "fluency": { "$ref": "#/$defs/i18n" }
+        }
+      }
+    },
+    "certificates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "$ref": "#/$defs/i18n" },
+          "date": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "cv": { "$ref": "#/$defs/visible" }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "description"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "$ref": "#/$defs/text" },
+          "description": { "$ref": "#/$defs/i18n" },
+          "url": { "type": "string", "format": "uri" },
+          "keywords": { "type": "array", "items": { "type": "string" } },
+          "tags": { "$ref": "#/$defs/tags" },
+          "cv": { "$ref": "#/$defs/visible" }
+        }
+      }
+    }
+  }
+}
