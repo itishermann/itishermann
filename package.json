@@ -10,7 +10,6 @@
     "readme": "node scripts/build-readme.mjs",
     "check:ats": "node scripts/check-ats.mjs",
     "build": "npm run validate && npm run build:cv && npm run readme && npm run build:site && npm run check:ats",
-    "build:pages": "npm run validate && npm run build:cv && npm run build:site",
     "tailor": "node scripts/tailor.mjs",
     "preview": "astro preview"
   },
