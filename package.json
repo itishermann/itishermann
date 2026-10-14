@@ -7,8 +7,9 @@
     "dev": "astro dev",
     "build:site": "astro build",
     "build:cv": "node scripts/build-cv.mjs",
+    "readme": "node scripts/build-readme.mjs",
     "check:ats": "node scripts/check-ats.mjs",
-    "build": "npm run validate && npm run build:cv && npm run build:site && npm run check:ats",
+    "build": "npm run validate && npm run build:cv && npm run readme && npm run build:site && npm run check:ats",
     "tailor": "node scripts/tailor.mjs",
     "preview": "astro preview"
   },

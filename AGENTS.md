@@ -39,4 +39,4 @@ Pour la liste à jour : `grep -o "tags: \[.*\]" data/cv.yaml | sort -u`.
 
 ## Modifier la source (seulement à la demande d'Hermann)
 
-Quand Hermann demande d'ajouter ou de corriger une expérience, édite `data/cv.yaml`, puis lance `npm run build`. Un push sur `master` reconstruit et redéploie le site et les deux PDF. Les `TODO(hermann)` dans le fichier signalent des informations qu'il doit fournir : ne les remplis pas à sa place.
+Quand Hermann demande d'ajouter ou de corriger une expérience, édite `data/cv.yaml`, puis lance `npm run build` : il régénère aussi `README.md` (profil GitHub), à committer avec la modification. Ne modifie jamais `README.md` à la main. Un push sur `master` reconstruit et redéploie le site et les deux PDF. Les `TODO(hermann)` dans le fichier signalent des informations qu'il doit fournir : ne les remplis pas à sa place.

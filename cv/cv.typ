@@ -26,7 +26,11 @@
 #v(-0.35em)
 #text(size: 11.5pt, weight: "semibold", fill: accent, data.label)
 #v(-0.25em)
-#text(size: 9.5pt, data.contact.join("  |  "))
+#text(size: 9.5pt, {
+  // Coordonnées sur la première ligne, profils en ligne sur la seconde.
+  data.contact.slice(0, calc.min(3, data.contact.len())).join("  |  ")
+  if data.contact.len() > 3 { linebreak(); data.contact.slice(3).join("  |  ") }
+})
 
 #if data.summary != "" {
   section(L.summary)

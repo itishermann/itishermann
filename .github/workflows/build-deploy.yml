@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
   deployments: write
   pull-requests: write
 
@@ -41,6 +41,21 @@ jobs:
       # Valide cv.yaml, génère les PDF FR/EN, construit le site, puis vérifie
       # que tout le texte des PDF est extractible (contrôle ATS).
       - run: npm run build
+
+      # npm run build régénère README.md depuis cv.yaml. Sur master, la CI le committe s'il a changé ;
+      # sur une PR, elle signale seulement qu'il faut le régénérer.
+      - name: README à jour
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README.md à jour"
+          elif [ "$GITHUB_EVENT_NAME" = "push" ] && [ "$GITHUB_REF" = "refs/heads/master" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git commit -m "README : régénéré depuis cv.yaml [skip ci]" -- README.md
+            git push
+          else
+            echo "::warning file=README.md::README.md n'est pas à jour, lancez npm run readme et committez le résultat."
+          fi
 
       - uses: actions/upload-artifact@v4
         with:

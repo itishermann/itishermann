@@ -11,6 +11,8 @@ const { rows, lanes } = graph();
 const LANE_W = 18;
 const github = (b.profiles || []).find((p: any) => p.network === 'GitHub');
 const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
+const blog = (b.profiles || []).find((p: any) => p.network === 'Blog');
+const firstYear = String(rows[0]?.item.start ?? '').slice(0, 4);
 ---
 <Base lang={lang}>
   <a class="skip" href="#parcours">{L.scroll}</a>
@@ -18,8 +20,9 @@ const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
   <header class="top">
     <a class="top__name" href={lang === 'fr' ? '/' : '/en/'}>Hermann Kao</a>
     <nav class="top__nav" aria-label={lang === 'fr' ? 'Liens' : 'Links'}>
-      <a href={L.otherHref} hreflang={other} lang={other}>{L.otherLang}</a>
+      {blog && <a href={blog.url} rel="me">Blog</a>}
       <a href={resumeHref(lang)} download>{L.resumeShort}</a>
+      <a href={L.otherHref} hreflang={other} lang={other}>{L.otherLang}</a>
     </nav>
   </header>
 
@@ -48,9 +51,8 @@ const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
           {github && <li><a class="btn" href={github.url} rel="me">GitHub</a></li>}
           {linkedin && <li><a class="btn" href={linkedin.url} rel="me">LinkedIn</a></li>}
         </ul>
+        <a class="hero__cue" href="#parcours">{L.scroll}</a>
       </div>
-
-      <a class="hero__cue" href="#parcours">{L.scroll}</a>
     </section>
 
     <section id="parcours" class="work" aria-labelledby="work-title" style={`--lanes:${lanes};--lane-w:${LANE_W}px`}>
@@ -59,45 +61,52 @@ const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
         <p>{L.workIntro}</p>
       </div>
 
-      <ol class="graph">
-        {rows.map((row) => {
-          const w = row.item;
-          return (
-            <li class="commit" style={`--lane:${row.lane}`}>
-              <div class="commit__rail" aria-hidden="true">
-                {row.above.map((on, l) => on && <span class="seg seg--top" style={`--l:${l}`} />)}
-                {row.below.map((on, l) => on && <span class="seg seg--bottom" style={`--l:${l}`} />)}
-                <span class="node" />
-              </div>
-              <article class="commit__body">
-                <p class="commit__date">
-                  <time datetime={w.start}>{range(w.start, w.end, lang)}</time>
-                </p>
-                <h3>{t(w.position, lang)}</h3>
-                <p class="commit__org">
-                  {t(w.organization, lang)}
-                  {w.contract && <><br />{t(w.contract, lang)}{w.location && `, ${t(w.location, lang)}`}</>}
-                </p>
-                {w.summary && <p class="commit__summary">{t(w.summary, lang)}</p>}
-                {w.highlights?.length > 0 && (
-                  <ul class="commit__list">
-                    {w.highlights.map((h: any) => <li>{h[lang]}</li>)}
-                  </ul>
-                )}
-              </article>
-            </li>
-          );
-        })}
-      </ol>
+      <div class="work__grid">
+        <!-- Année du commit en cours de lecture : se met à jour au scroll (voir le script plus bas). -->
+        <div class="clock" aria-hidden="true">
+          <span class="clock__year" data-clock>{firstYear}</span>
+        </div>
+
+        <ol class="graph">
+          {rows.map((row, i) => {
+            const w = row.item;
+            return (
+              <li class:list={['commit', { 'is-active': i === 0 }]} style={`--lane:${row.lane}`} data-year={String(w.start).slice(0, 4)}>
+                <div class="commit__rail" aria-hidden="true">
+                  {row.above.map((on, l) => on && <span class="seg seg--top" style={`--l:${l}`} />)}
+                  {row.below.map((on, l) => on && <span class="seg seg--bottom" style={`--l:${l}`} />)}
+                  <span class="node" />
+                </div>
+                <article class="commit__body">
+                  <p class="commit__date">
+                    <time datetime={w.start}>{range(w.start, w.end, lang)}</time>
+                  </p>
+                  <h3>{t(w.position, lang)}</h3>
+                  <p class="commit__org">
+                    {t(w.organization, lang)}
+                    {w.contract && <><br />{t(w.contract, lang)}{w.location && `, ${t(w.location, lang)}`}</>}
+                  </p>
+                  {w.summary && <p class="commit__summary">{t(w.summary, lang)}</p>}
+                  {w.highlights?.length > 0 && (
+                    <ul class="commit__list">
+                      {w.highlights.map((h: any) => <li>{h[lang]}</li>)}
+                    </ul>
+                  )}
+                </article>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
     </section>
 
     <section class="block" aria-labelledby="skills-title">
       <h2 id="skills-title">{L.skills}</h2>
       <dl class="skills">
         {cv.skills.map((s: any) => (
-          <div>
+          <div class="skills__row">
             <dt>{t(s.name, lang)}</dt>
-            <dd>{s.keywords.join(', ')}</dd>
+            <dd>{s.keywords.map((k: string) => <span>{k}</span>)}</dd>
           </div>
         ))}
       </dl>
@@ -110,6 +119,7 @@ const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
           <li>
             <h3>{p.url ? <a href={p.url}>{t(p.name, lang)}</a> : t(p.name, lang)}</h3>
             <p>{t(p.description, lang)}</p>
+            {p.keywords?.length > 0 && <p class="projects__stack">{p.keywords.join(', ')}</p>}
           </li>
         ))}
       </ul>
@@ -133,8 +143,56 @@ const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
     </section>
   </main>
 
-  <footer class="foot">
-    <p class="foot__cta"><a href={`mailto:${b.email}`}>{b.email}</a></p>
-    <p>{L.footer} <a href="https://github.com/itishermann/itishermann/blob/master/data/cv.yaml">{L.source}</a></p>
+  <footer class="contact" aria-labelledby="contact-title">
+    <div class="contact__inner">
+      <h2 id="contact-title">{L.contactTitle}</h2>
+      <p class="contact__lead">{L.contactLead}</p>
+      <p class="contact__mail"><a href={`mailto:${b.email}`}>{b.email}</a></p>
+      <p class="contact__cv">
+        {L.cvLinks}{lang === 'fr' ? ' : ' : ': '}
+        <a href={resumeHref('fr')} download hreflang="fr">{L.cvFr}</a>{', '}<a href={resumeHref('en')} download hreflang="en">{L.cvEn}</a>
+      </p>
+      <p class="contact__source">{L.footer} <a href="https://github.com/itishermann/itishermann/blob/master/data/cv.yaml">{L.source}</a></p>
+    </div>
   </footer>
+
+  <script>
+    // git log au scroll : le commit au centre de l'écran devient actif et l'horloge affiche son année.
+    const clock = document.querySelector<HTMLElement>('[data-clock]');
+    const commits = [...document.querySelectorAll<HTMLElement>('.commit')];
+    const calm = matchMedia('(prefers-reduced-motion: reduce)');
+    let current = clock?.textContent ?? '';
+
+    function setYear(year: string, down: boolean) {
+      if (!clock || year === current) return;
+      current = year;
+      if (calm.matches || !clock.animate) { clock.textContent = year; return; }
+      const dir = down ? 1 : -1;
+      clock.animate(
+        [{ transform: 'translateY(0)', opacity: 1 }, { transform: `translateY(${-0.35 * dir}em)`, opacity: 0 }],
+        { duration: 140, easing: 'cubic-bezier(0.7, 0, 0.84, 0)' },
+      ).finished.then(() => {
+        clock.textContent = year;
+        clock.animate(
+          [{ transform: `translateY(${0.35 * dir}em)`, opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }],
+          { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+        );
+      });
+    }
+
+    let lastIndex = 0;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          const i = commits.indexOf(e.target as HTMLElement);
+          commits.forEach((c, j) => c.classList.toggle('is-active', j === i));
+          setYear((e.target as HTMLElement).dataset.year ?? '', i > lastIndex);
+          lastIndex = i;
+        }
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    commits.forEach((c) => io.observe(c));
+  </script>
 </Base>
