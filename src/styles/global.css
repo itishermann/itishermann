@@ -89,12 +89,16 @@ a:hover { color: var(--indigo); }
   width: 100%;
   max-width: 460px;
   justify-self: end;
-  background: var(--paper-2);
-  clip-path: circle(80% at 52% 46%);
+  /* Photo détourée : pas de cadre. Fondu en bas et à droite, là où le buste et le bras touchent le bord. */
+  clip-path: circle(85% at 43% 32%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 98%), linear-gradient(to right, #000 80%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, #000 66%, transparent 98%), linear-gradient(to right, #000 80%, transparent 100%);
+  mask-composite: intersect;
   will-change: clip-path, transform;
 }
 .hero__photo picture { display: contents; }
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.15) contrast(1.02); }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero__monogram {
   width: 100%; height: 100%; display: grid; place-items: center;
   background: linear-gradient(var(--indigo), var(--indigo));
@@ -205,7 +209,7 @@ a:hover { color: var(--indigo); }
   .hello__other { animation-delay: 0.35s; }
   .hero__photo { animation-name: reveal; animation-duration: 0.9s; }
   @keyframes rise { from { opacity: 0; transform: translateY(0.35em); } }
-  @keyframes reveal { from { clip-path: circle(0% at 52% 46%); } }
+  @keyframes reveal { from { clip-path: circle(0% at 43% 32%); } }
 
   @supports (animation-timeline: view()) {
     /* Les timelines sont déclarées dans des règles séparées : le minifieur fusionne sinon tout
@@ -215,7 +219,7 @@ a:hover { color: var(--indigo); }
     .hero__photo { animation: reveal 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both, to-node linear both; }
     .hero .hero__photo { animation-timeline: auto, view(); animation-range: normal, exit 0% exit 90%; }
     @keyframes to-node {
-      to { clip-path: circle(22% at 52% 46%); transform: translateY(30%) scale(0.75); opacity: 0.35; }
+      to { clip-path: circle(21% at 43% 32%); background-color: var(--paper-2); transform: translateY(30%) scale(0.75); opacity: 0.4; }
     }
 
     /* Les branches se tracent au fil du scroll. */

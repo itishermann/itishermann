@@ -28,7 +28,7 @@ const linkedin = (b.profiles || []).find((p: any) => p.network === 'LinkedIn');
       <div class="hero__photo">
         {photoExists
           ? <picture>
-              <source srcset={b.photo.replace(/\.jpe?g$/, '.webp')} type="image/webp" />
+              <source srcset={b.photo.replace(/\.(jpe?g|png)$/, '.webp')} type="image/webp" />
               <img src={b.photo} alt={L.photoAlt} width="900" height="1200" fetchpriority="high" decoding="async" />
             </picture>
           : <div class="hero__monogram" role="img" aria-label={L.photoAlt}><span>HK</span></div>}
