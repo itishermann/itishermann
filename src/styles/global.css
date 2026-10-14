@@ -90,9 +90,10 @@ a:hover { color: var(--indigo); }
   max-width: 460px;
   justify-self: end;
   background: var(--paper-2);
-  clip-path: circle(80% at 50% 45%);
+  clip-path: circle(80% at 52% 46%);
   will-change: clip-path, transform;
 }
+.hero__photo picture { display: contents; }
 .hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.15) contrast(1.02); }
 .hero__monogram {
   width: 100%; height: 100%; display: grid; place-items: center;
@@ -204,7 +205,7 @@ a:hover { color: var(--indigo); }
   .hello__other { animation-delay: 0.35s; }
   .hero__photo { animation-name: reveal; animation-duration: 0.9s; }
   @keyframes rise { from { opacity: 0; transform: translateY(0.35em); } }
-  @keyframes reveal { from { clip-path: circle(0% at 50% 45%); } }
+  @keyframes reveal { from { clip-path: circle(0% at 52% 46%); } }
 
   @supports (animation-timeline: view()) {
     /* Les timelines sont déclarées dans des règles séparées : le minifieur fusionne sinon tout
@@ -214,7 +215,7 @@ a:hover { color: var(--indigo); }
     .hero__photo { animation: reveal 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both, to-node linear both; }
     .hero .hero__photo { animation-timeline: auto, view(); animation-range: normal, exit 0% exit 90%; }
     @keyframes to-node {
-      to { clip-path: circle(22% at 50% 45%); transform: translateY(30%) scale(0.75); opacity: 0.35; }
+      to { clip-path: circle(22% at 52% 46%); transform: translateY(30%) scale(0.75); opacity: 0.35; }
     }
 
     /* Les branches se tracent au fil du scroll. */
