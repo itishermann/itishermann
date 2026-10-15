@@ -21,7 +21,6 @@ const person = {
   jobTitle: label,
   description: t(b.summary, lang),
   url: site,
-  email: `mailto:${b.email}`,
   image: photoExists ? `${site}${b.photo}` : undefined,
   address: { '@type': 'PostalAddress', addressLocality: b.location.city, addressRegion: b.location.region, addressCountry: b.location.countryCode },
   sameAs: (b.profiles || []).map((p: any) => p.url),

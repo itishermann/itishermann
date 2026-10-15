@@ -54,7 +54,7 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
         <p class="hero__meta">{b.location.city}, France. {t(b.remote, lang)}.</p>
         <div class="cta">
           <a class="btn" href={resumeHref(lang)} download>{L.resume}</a>
-          <a class="textlink" href={`mailto:${b.email}`}>{L.email}</a>
+          <a class="textlink" href={`#${ids.contact}`}>{L.contactCta}</a>
         </div>
       </div>
 
@@ -86,7 +86,6 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
         {github && <li><a href={github.url} rel="me" aria-label="GitHub"><Icon name="github" /></a></li>}
         {linkedin && <li><a href={linkedin.url} rel="me" aria-label="LinkedIn"><Icon name="linkedin" /></a></li>}
         {blog && <li><a href={blog.url} rel="me" aria-label={L.nav.blog}><Icon name="hashnode" /></a></li>}
-        <li><a href={`mailto:${b.email}`} aria-label={L.email}><Icon name="mail" /></a></li>
       </ul>
 
       <a class="scrolldown" href={`#${ids.work}`}>{L.scrollDown}</a>
@@ -194,7 +193,35 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
       <h2 id="contact-title">{L.contactTitle}</h2>
       <p class="section__lead">{L.contactLead}</p>
     </div>
-    <p class="contact__mail"><a href={`mailto:${b.email}`}>{b.email}</a></p>
+    <form
+      class="contact__form"
+      id="contact-form"
+      data-endpoint="https://forms.itishermann.me/forms/contact/submit?token=c347013cf1a9aa9e11410708578be279900b5c0a4c8cb9a9"
+      data-sending={L.form.sending}
+      data-ok={L.form.ok}
+      data-error={L.form.error}
+    >
+      <div class="field field--half">
+        <label for="cf-name">{L.form.name}</label>
+        <input id="cf-name" name="name" type="text" autocomplete="name" required />
+      </div>
+      <div class="field field--half">
+        <label for="cf-email">{L.form.email}</label>
+        <input id="cf-email" name="email" type="email" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="cf-message">{L.form.message}</label>
+        <textarea id="cf-message" name="message" rows="5" required></textarea>
+      </div>
+      <p class="contact__hp" aria-hidden="true">
+        <label>{L.form.hp}<input type="text" name="__mf_hp" tabindex="-1" autocomplete="off" /></label>
+      </p>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFXaRyNnAwPTt0PQ" data-theme="auto" data-size="flexible"></div>
+      <div class="contact__submit">
+        <button class="btn" type="submit">{L.form.send}</button>
+        <p class="contact__status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </form>
     <div class="cta">
       <a class="btn" href={resumeHref(lang)} download>{L.resume}</a>
       <a class="textlink" href={resumeHref(other)} download hreflang={other}>{L.cvOther}</a>
@@ -205,6 +232,8 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
     <a class="dock__cv" href={resumeHref(lang)} download>{L.resumeShort}</a>
     <a class="dock__contact" href={`#${ids.contact}`}>{L.nav.contact}</a>
   </nav>
+
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
 
   <script>
     // Ruban au scroll : le poste lu au centre de l'écran s'active, et sa barre s'allume dans le ruban.
@@ -270,6 +299,30 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
       const sync = () => dock.classList.toggle('is-shown', pastHero && !atContact);
       new IntersectionObserver((es) => { for (const e of es) pastHero = !e.isIntersecting; sync(); }, { rootMargin: '-15% 0px 0px 0px' }).observe(heroEl);
       if (contactEl) new IntersectionObserver((es) => { for (const e of es) atContact = e.isIntersecting; sync(); }).observe(contactEl);
+    }
+
+    // Formulaire de contact : envoi via fetch vers Miniform, états inline, Turnstile réinitialisé.
+    const cform = document.getElementById('contact-form');
+    if (cform instanceof HTMLFormElement) {
+      const cstatus = cform.querySelector<HTMLElement>('[data-status]');
+      const cbtn = cform.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const setStatus = (text: string, state: string) => { if (cstatus) { cstatus.textContent = text; cstatus.dataset.state = state; } };
+      cform.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setStatus(cform.dataset.sending ?? '', 'sending');
+        if (cbtn) cbtn.disabled = true;
+        try {
+          const res = await fetch(cform.dataset.endpoint ?? '', { method: 'POST', body: new FormData(cform), headers: { Accept: 'application/json' } });
+          if (!res.ok) throw new Error(String(res.status));
+          cform.reset();
+          setStatus(cform.dataset.ok ?? '', 'ok');
+          (window as unknown as { turnstile?: { reset?: () => void } }).turnstile?.reset?.();
+        } catch {
+          setStatus(cform.dataset.error ?? '', 'error');
+        } finally {
+          if (cbtn) cbtn.disabled = false;
+        }
+      });
     }
   </script>
 </Base>

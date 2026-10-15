@@ -48,7 +48,7 @@ I have been building web and mobile apps in TypeScript since 2020, and I also ta
 
 #### Links
 
-[Website](https://itishermann.me/en/) · [Blog](https://itishermann.hashnode.dev) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [Resume (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [CV in French (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [itishermann@gmail.com](mailto:itishermann@gmail.com)
+[Website](https://itishermann.me/en/) · [Blog](https://itishermann.hashnode.dev) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [Resume (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [CV in French (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [Contact](https://itishermann.me/en/#contact)
 
 <details>
 <summary>Version française</summary>
@@ -99,7 +99,7 @@ Je développe des applications web et mobiles en TypeScript depuis 2020, et je m
 
 #### Liens
 
-[Site](https://itishermann.me) · [Blog](https://itishermann.hashnode.dev) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [CV (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [CV en anglais (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [itishermann@gmail.com](mailto:itishermann@gmail.com)
+[Site](https://itishermann.me) · [Blog](https://itishermann.hashnode.dev) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [CV (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [CV en anglais (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [Contact](https://itishermann.me/#contact)
 
 </details>
 

@@ -24,7 +24,6 @@ basics:
   greeting:
     fr: Salut, moi c'est Hermann.
     en: Hi, I'm Hermann.
-  email: itishermann@gmail.com
   website: https://itishermann.me
   photo: /photo.png
   location:
