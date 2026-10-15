@@ -33,7 +33,11 @@ export const ui = {
     email: 'Écrire un mail',
     scroll: 'Mon parcours',
     work: 'Parcours',
-    workIntro: 'Les missions qui se chevauchent apparaissent côte à côte.',
+    workIntro: 'Un aperçu des missions en tête, le détail poste par poste en dessous.',
+    overviewLegend: 'Chaque barre, une mission. Empilées, elles sont simultanées.',
+    overviewSummary: (n: number) => `Jusqu'à ${n} missions menées en parallèle sur la période.`,
+    showMore: (n: number) => `Voir ${n} de plus`,
+    showLess: 'Réduire',
     skills: "Ce que j'utilise",
     projects: 'Projets perso',
     education: 'Formation',
@@ -82,7 +86,11 @@ export const ui = {
     email: 'Email me',
     scroll: 'My path',
     work: 'Work',
-    workIntro: 'Overlapping assignments appear side by side.',
+    workIntro: 'A quick overview up top, then role-by-role detail below.',
+    overviewLegend: 'Each bar is one assignment. Stacked bars overlap in time.',
+    overviewSummary: (n: number) => `Up to ${n} assignments running at the same time.`,
+    showMore: (n: number) => `Show ${n} more`,
+    showLess: 'Show less',
     skills: 'Tools I use',
     projects: 'Side projects',
     education: 'Education',
@@ -130,13 +138,13 @@ const now = (() => {
 })();
 
 type Work = (typeof cv.work)[number];
-export interface Bar { id: string; lane: number; topPct: number; heightPct: number; ongoing: boolean }
+export interface Bar { id: string; lane: number; leftPct: number; widthPct: number; ongoing: boolean }
 export interface TimelineRow { item: Work; lane: number }
 
 export function timeline(): {
   bars: Bar[];
   rows: TimelineRow[];
-  years: { year: number; topPct: number }[];
+  years: { year: number; leftPct: number }[];
   lanes: number;
 } {
   const items = cv.work.map((w: Work) => ({ w, s: toNum(w.start), e: w.end ? toNum(w.end) : now }));
@@ -154,28 +162,27 @@ export function timeline(): {
   const spanStart = Math.min(...items.map((i) => i.s));
   const spanEnd = now;
   const span = Math.max(1, spanEnd - spanStart);
-  // Le plus récent en haut (0 %), le plus ancien en bas (100 %).
-  const pct = (tm: number) => ((spanEnd - tm) / span) * 100;
+  // Axe horizontal : le plus ancien à gauche (0 %), le plus récent à droite (100 %).
+  const pct = (tm: number) => ((tm - spanStart) / span) * 100;
   const clamp = (n: number) => Math.min(100, Math.max(0, n));
 
-  const bars: Bar[] = [...items]
-    .sort((a, b) => b.e - a.e)
-    .map((it) => ({
-      id: it.w.id,
-      lane: laneOf.get(it.w)!,
-      topPct: clamp(pct(it.e)),
-      heightPct: Math.max(3, clamp(((it.e - it.s) / span) * 100)),
-      ongoing: !it.w.end,
-    }));
+  const bars: Bar[] = items.map((it) => ({
+    id: it.w.id,
+    lane: laneOf.get(it.w)!,
+    leftPct: clamp(pct(it.s)),
+    widthPct: Math.max(2, clamp(((it.e - it.s) / span) * 100)),
+    ongoing: !it.w.end,
+  }));
 
-  const years: { year: number; topPct: number }[] = [];
-  for (let y = Math.floor(spanEnd / 12); y >= Math.floor(spanStart / 12); y--) {
+  const years: { year: number; leftPct: number }[] = [];
+  for (let y = Math.floor(spanStart / 12); y <= Math.floor(spanEnd / 12); y++) {
     const p = pct(y * 12);
-    if (p >= -2 && p <= 102) years.push({ year: y, topPct: clamp(p) });
+    if (p >= -2 && p <= 102) years.push({ year: y, leftPct: clamp(p) });
   }
 
+  // Liste menée par l'activité la plus récente : postes en cours d'abord, puis par fin décroissante.
   const rows: TimelineRow[] = [...items]
-    .sort((a, b) => b.s - a.s)
+    .sort((a, b) => b.e - a.e || b.s - a.s)
     .map((it) => ({ item: it.w, lane: laneOf.get(it.w)! }));
 
   return { bars, rows, years, lanes };
