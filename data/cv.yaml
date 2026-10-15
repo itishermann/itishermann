@@ -414,6 +414,7 @@ projects:
     description:
       fr: Package NPM qui traduit les messages d'erreur techniques d'Appwrite en explications claires et exploitables.
       en: NPM package that turns Appwrite's technical error messages into clear, actionable explanations.
+    url: https://www.npmjs.com/package/@itishermann/appwrite-exceptions-translator
     keywords: [TypeScript, Bun, Appwrite]
     tags: [backend, tooling]
   - id: step-path-generator
@@ -421,6 +422,7 @@ projects:
     description:
       fr: Générateur d'itinéraires de marche en boucle pour un objectif de pas quotidien, avec carte Leaflet, export GPX et stockage local.
       en: Loop walking-route generator for a daily step goal, with a Leaflet map, GPX export and local storage.
+    url: https://10k-steps.itishermann.me
     keywords: [Next.js, Leaflet, Bun]
     tags: [web]
   - id: sports-events
