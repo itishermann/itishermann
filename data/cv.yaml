@@ -393,6 +393,7 @@ projects:
     description:
       fr: Génération de CV ciblés par LLM, avec rendu PDF en Typst et recherche sémantique sur pgvector.
       en: LLM-generated targeted resumes, rendered to PDF with Typst, with semantic search on pgvector.
+    url: https://github.com/itishermann/career-hub
     keywords: [LLM, Typst, pgvector]
     tags: [ia, backend]
   - id: agent-kanban
