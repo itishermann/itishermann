@@ -4,14 +4,14 @@
 
 ### Hi, I'm Hermann.
 
-**Fullstack JavaScript / TypeScript developer with a DevOps focus**, based in Saint-Étienne, France.
+**Versatile developer, from product to infrastructure**, based in Saint-Étienne, France.
 
-I have been building web and mobile apps in TypeScript since 2020, and I also take care of what runs underneath: CI/CD, Kubernetes, AWS and monitoring. I have often been the only engineer on a product, covering the backend, the mobile app and the infrastructure. Since 2025 I have been wiring AI agents into delivery pipelines, from the ticket to a tested pull request.
+What defines me most is adaptability: I pick up whichever language, framework and layer a product needs. Day to day in TypeScript, on web and mobile, but equally at ease in Java, C#, Rust, Swift or Python depending on the context. I work from the product down to the infrastructure (CI/CD, Kubernetes, cloud, monitoring) and have often been a product's only engineer. Since 2025 I have been wiring AI agents into delivery pipelines, from the ticket to a tested pull request.
 
 **Currently**
 
 - Application integrator and DevOps engineer, B2B equipment financing company (financial group)
-- Mobile developer, then fullstack developer, then software architect, The After Cancer, health support app (Portugal)
+- Mobile developer, then fullstack developer, then software architect, The After Cancer, health support app (United States)
 
 #### Experience
 
@@ -19,19 +19,20 @@ I have been building web and mobile apps in TypeScript since 2020, and I also ta
 |---|---|---|
 | Since Aug 2026 | Application integrator and DevOps engineer | B2B equipment financing company (financial group) |
 | Jul 2025 – Sep 2026 | Fullstack developer | Versusmind, IT services company (Nancy) |
-| Since Apr 2025 | Mobile developer, then fullstack developer, then software architect | The After Cancer, health support app (Portugal) |
-| Jan 2023 – Dec 2024 | Freelance developer | Short assignments for startups and studios |
+| Since Apr 2025 | Mobile developer, then fullstack developer, then software architect | The After Cancer, health support app (United States) |
+| Jan 2023 – Dec 2024 | Freelance developer | Short assignments for studios and startups |
 | Aug 2021 – Nov 2025 | Fullstack and DevOps developer | Nobo, home cleaning service (Palladium group) |
 | Apr 2021 – Oct 2022 | System administrator | Snowtrust (Limoges) |
 | Apr 2020 – Sep 2020 | Fullstack and DevOps intern | Nobo (Palladium group) |
 
 #### Toolbox
 
-- **Front-end and mobile**: TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI
-- **Back-end**: Node.js, PHP, Python, .NET, REST, RabbitMQ, Pub/Sub, PostgreSQL, MySQL
+- **Front-end, mobile and desktop**: TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI
+- **Back-end**: Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite
 - **CMS and e-commerce**: Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
-- **DevOps and cloud**: Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, AWS, Google Cloud, OVH, Cloudflare
-- **Systems and monitoring**: Linux (Debian), Bash, ELK, Loki / Grafana, Sentry, CloudWatch
+- **DevOps and cloud**: Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
+- **Systems and monitoring**: Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Sentry, CloudWatch, OpenVAS
+- **Testing and quality**: Playwright, Detox, Selenium, SonarQube
 - **Applied AI**: Claude Code, AI agents, MCP, Ollama, LLM orchestration
 
 #### Side projects
@@ -55,14 +56,14 @@ I have been building web and mobile apps in TypeScript since 2020, and I also ta
 
 ### Salut, moi c'est Hermann.
 
-**Développeur fullstack JavaScript / TypeScript, orienté DevOps**, basé à Saint-Étienne, France.
+**Développeur polyvalent, du produit à l'infrastructure**, basé à Saint-Étienne, France.
 
-Je développe des applications web et mobiles en TypeScript depuis 2020, et je m'occupe aussi de ce qui tourne en dessous : CI/CD, Kubernetes, AWS, supervision. J'ai souvent été le seul technique d'un produit, du backend à l'app mobile en passant par l'infra. Depuis 2025, j'intègre des agents IA dans les chaînes de livraison, du ticket jusqu'à la pull request testée.
+Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le framework et la couche dont le produit a besoin. Au quotidien en TypeScript, sur le web comme le mobile, mais aussi à l'aise en Java, C#, Rust, Swift ou Python selon le contexte. Je vais du produit à l'infrastructure (CI/CD, Kubernetes, cloud, supervision) et j'ai souvent été le seul technique d'un produit. Depuis 2025, j'intègre des agents IA dans les chaînes de livraison, du ticket jusqu'à la pull request testée.
 
 **En ce moment**
 
 - Intégrateur applicatif et DevOps, Société de financement d'équipements B2B (groupe financier)
-- Développeur mobile, puis fullstack, puis architecte logiciel, The After Cancer, application d'accompagnement santé (Portugal)
+- Développeur mobile, puis fullstack, puis architecte logiciel, The After Cancer, application d'accompagnement santé (États-Unis)
 
 #### Parcours
 
@@ -70,19 +71,20 @@ Je développe des applications web et mobiles en TypeScript depuis 2020, et je m
 |---|---|---|
 | Depuis août 2026 | Intégrateur applicatif et DevOps | Société de financement d'équipements B2B (groupe financier) |
 | juil. 2025 – sept. 2026 | Développeur fullstack | Versusmind, ESN (Nancy) |
-| Depuis avr. 2025 | Développeur mobile, puis fullstack, puis architecte logiciel | The After Cancer, application d'accompagnement santé (Portugal) |
-| janv. 2023 – déc. 2024 | Développeur freelance | Missions courtes pour des startups et studios |
+| Depuis avr. 2025 | Développeur mobile, puis fullstack, puis architecte logiciel | The After Cancer, application d'accompagnement santé (États-Unis) |
+| janv. 2023 – déc. 2024 | Développeur freelance | Missions courtes pour des studios et startups |
 | août 2021 – nov. 2025 | Développeur fullstack et DevOps | Nobo, service de ménage à domicile (groupe Palladium) |
 | avr. 2021 – oct. 2022 | Administrateur système | Snowtrust (Limoges) |
 | avr. 2020 – sept. 2020 | Stagiaire développeur fullstack et DevOps | Nobo (groupe Palladium) |
 
 #### Outils
 
-- **Front-end et mobile** : TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI
-- **Back-end** : Node.js, PHP, Python, .NET, REST, RabbitMQ, Pub/Sub, PostgreSQL, MySQL
+- **Front-end, mobile et desktop** : TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI
+- **Back-end** : Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite
 - **CMS et e-commerce** : Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
-- **DevOps et cloud** : Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, AWS, Google Cloud, OVH, Cloudflare
-- **Systèmes et supervision** : Linux (Debian), Bash, ELK, Loki / Grafana, Sentry, CloudWatch
+- **DevOps et cloud** : Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
+- **Systèmes et supervision** : Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Sentry, CloudWatch, OpenVAS
+- **Tests et qualité** : Playwright, Detox, Selenium, SonarQube
 - **IA appliquée** : Claude Code, AI agents, MCP, Ollama, LLM orchestration
 
 #### Projets perso
