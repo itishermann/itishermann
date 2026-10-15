@@ -9,6 +9,7 @@
   --accent-ink: #2f3399;
   --brush: #d5dbf0;
   --on-accent: #ffffff;
+  --photo-shadow: rgba(38, 42, 55, 0.20);
 
   --display: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
   --text: 'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
@@ -39,6 +40,7 @@
     --accent-ink: #c3c5ff;
     --brush: #1f2440;
     --on-accent: #10131c;
+    --photo-shadow: rgba(0, 0, 0, 0.55);
     color-scheme: dark;
   }
 }
@@ -177,8 +179,10 @@ a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
   position: relative; z-index: 1;
   aspect-ratio: 3 / 4;
   /* Coupe oblique « papier découpé » : le bas et la droite sont tranchés d'une seule diagonale,
-     parallèle au coup de pinceau, du bord droit jusqu'au coin bas-gauche. */
+     parallèle au coup de pinceau, du bord droit jusqu'au coin bas-gauche. L'ombre portée donne
+     l'épaisseur du papier qui se décolle de la page (teinte adaptée au thème). */
   clip-path: polygon(0 0, 100% 0, 100% 68%, 0 100%);
+  filter: drop-shadow(4px 7px 10px var(--photo-shadow));
 }
 .hero__photo picture { display: contents; }
 .hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
