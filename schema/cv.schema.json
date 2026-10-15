@@ -190,6 +190,10 @@
           "cv": { "$ref": "#/$defs/visible" }
         }
       }
+    },
+    "interests": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/text" }
     }
   }
 }

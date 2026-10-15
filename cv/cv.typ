@@ -81,3 +81,8 @@
   section(L.certificates)
   list(..data.certificates)
 }
+
+#if data.interests.len() > 0 {
+  section(L.interests)
+  data.interests.join("  |  ")
+}

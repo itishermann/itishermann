@@ -17,11 +17,11 @@ const langs = (args.lang || LANGS.join(',')).split(',');
 const LABELS = {
   fr: {
     summary: 'Profil', experience: 'Expérience professionnelle', skills: 'Compétences', projects: 'Projets personnels',
-    education: 'Formation', languages: 'Langues', certificates: 'Formations complémentaires', colon: ' : ',
+    education: 'Formation', languages: 'Langues', certificates: 'Formations complémentaires', interests: 'Centres d\'intérêt', colon: ' : ',
   },
   en: {
     summary: 'Summary', experience: 'Professional experience', skills: 'Skills', projects: 'Personal projects',
-    education: 'Education', languages: 'Languages', certificates: 'Additional training', colon: ': ',
+    education: 'Education', languages: 'Languages', certificates: 'Additional training', interests: 'Interests', colon: ': ',
   },
 };
 
@@ -61,6 +61,7 @@ function resolveForLang(raw, lang) {
     })),
     languages: (cv.languages || []).map((l) => `${t(l.language, lang)}${LABELS[lang].colon}${t(l.fluency, lang)}`),
     certificates: cv.certificates.map((c) => t(c.name, lang)),
+    interests: (cv.interests || []).map((i) => t(i, lang)),
   };
 }
 

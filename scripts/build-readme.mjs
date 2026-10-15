@@ -20,6 +20,7 @@ const T = {
     toolbox: 'Toolbox',
     projects: 'Side projects',
     education: 'Education',
+    interests: 'Interests',
     links: 'Links',
     site: 'Website',
     resume: 'Resume (PDF)',
@@ -35,6 +36,7 @@ const T = {
     toolbox: 'Outils',
     projects: 'Projets perso',
     education: 'Formation',
+    interests: 'Centres d\'intérêt',
     links: 'Liens',
     site: 'Site',
     resume: 'CV (PDF)',
@@ -85,6 +87,10 @@ function section(lang) {
   lines.push(`#### ${L.education}`, '');
   for (const e of cv.education) lines.push(`- ${t(e.studyType, lang)}, ${t(e.area, lang)}. ${e.institution}, ${e.end}`);
   lines.push('');
+
+  if (cv.interests?.length) {
+    lines.push(`#### ${L.interests}`, '', cv.interests.map((i) => t(i, lang)).join(' · '), '');
+  }
 
   const blog = profile('Blog');
   const linkedin = profile('LinkedIn');

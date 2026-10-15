@@ -17,8 +17,8 @@ const blog = profile('Blog');
 const [firstName, ...rest] = b.name.split(' ');
 const home = lang === 'fr' ? '/' : '/en/';
 const ids = lang === 'fr'
-  ? { work: 'parcours', skills: 'competences', projects: 'projets', education: 'formation', contact: 'contact' }
-  : { work: 'work', skills: 'skills', projects: 'projects', education: 'education', contact: 'contact' };
+  ? { work: 'parcours', skills: 'competences', projects: 'projets', education: 'formation', interests: 'centres-interet', contact: 'contact' }
+  : { work: 'work', skills: 'skills', projects: 'projects', education: 'education', interests: 'interests', contact: 'contact' };
 const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and languages';
 ---
 <Base lang={lang}>
@@ -185,6 +185,16 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
         </ul>
       </div>
     </section>
+
+    {cv.interests?.length > 0 && (
+      <section id={ids.interests} class="section" aria-labelledby="interests-title" data-section={ids.interests}>
+        <div class="section__head">
+          <p class="eyebrow">{L.eyebrow.interests}</p>
+          <h2 id="interests-title">{L.interestsTitle}</h2>
+        </div>
+        <p class="interests">{cv.interests.map((i: any) => t(i, lang)).join(' · ')}</p>
+      </section>
+    )}
   </main>
 
   <footer id={ids.contact} class="section contact" aria-labelledby="contact-title" data-section={ids.contact}>

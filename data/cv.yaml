@@ -319,6 +319,16 @@ education:
       fr: Responsable de projets web et mobile
       en: Web and mobile project manager
     end: 2022
+  - institution: ESSTI
+    location: Rabat
+    studyType: { fr: Cycle ingénieur, en: Engineering programme }
+    area: { fr: Systèmes automatisés, en: Automated systems }
+    end: 2019
+  - institution: ESSTI
+    location: Rabat
+    studyType: { fr: Classes préparatoires, en: Preparatory classes }
+    area: { fr: "Mathématiques, physique et mécanique", en: "Mathematics, physics and mechanics" }
+    end: 2018
 
 skills:
   - id: frontend
@@ -352,6 +362,14 @@ languages:
 certificates:
   - name: { fr: McKinsey Forward (communication et leadership), en: McKinsey Forward (communication and leadership) }
 
+interests:
+  - { fr: Randonnée, en: Hiking }
+  - { fr: Lecture, en: Reading }
+  - Art
+  - { fr: Photographie, en: Photography }
+  - { fr: Préparation automobile, en: Car tuning }
+  - { fr: Électronique et domotique, en: Electronics and home automation }
+
 projects:
   - id: career-hub
     name: career-hub
@@ -374,6 +392,27 @@ projects:
       en: iOS app that helps people quit smoking and cannabis, designed to never shame the user.
     keywords: [SwiftUI, SwiftData]
     tags: [mobile]
+  - id: appwrite-exceptions-translator
+    name: Appwrite Exceptions Translator
+    description:
+      fr: Package NPM qui traduit les messages d'erreur techniques d'Appwrite en explications claires et exploitables.
+      en: NPM package that turns Appwrite's technical error messages into clear, actionable explanations.
+    keywords: [TypeScript, Bun, Appwrite]
+    tags: [backend, tooling]
+  - id: step-path-generator
+    name: 10K Step Path Generator
+    description:
+      fr: Générateur d'itinéraires de marche en boucle pour un objectif de pas quotidien, avec carte Leaflet, export GPX et stockage local.
+      en: Loop walking-route generator for a daily step goal, with a Leaflet map, GPX export and local storage.
+    keywords: [Next.js, Leaflet, Bun]
+    tags: [web]
+  - id: sports-events
+    name: Sports Events
+    description:
+      fr: "Plateforme web de gestion d'événements sportifs locaux : création, participation, géolocalisation et cartographie."
+      en: "Web platform for local sports events: creation, sign-up, geolocation and mapping."
+    keywords: [React, Next.js, Spring Boot, MySQL]
+    tags: [web, backend]
   - id: home-ai
     name: { fr: Infrastructure IA auto-hébergée, en: Self-hosted AI infrastructure }
     description:
