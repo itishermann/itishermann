@@ -40,12 +40,21 @@ What defines me most is adaptability: I pick up whichever language, framework an
 - **career-hub**: LLM-generated targeted resumes, rendered to PDF with Typst, with semantic search on pgvector.
 - **Agent orchestration kanban**: Tauri desktop app to run several Claude Code sessions from a kanban board.
 - **Éclore**: iOS app that helps people quit smoking and cannabis, designed to never shame the user.
+- **Appwrite Exceptions Translator**: NPM package that turns Appwrite's technical error messages into clear, actionable explanations.
+- **10K Step Path Generator**: Loop walking-route generator for a daily step goal, with a Leaflet map, GPX export and local storage.
+- **Sports Events**: Web platform for local sports events: creation, sign-up, geolocation and mapping.
 - **Self-hosted AI infrastructure**: Local inference with Ollama on a GPU, routed over Tailscale, with services deployed through Dokploy behind Cloudflare Tunnel.
 
 #### Education
 
 - Master of Science, Software architect, application developer. ETNA, 2024
 - Bachelor's degree, Web and mobile project manager. ETNA, 2022
+- Engineering programme, Automated systems. ESSTI, 2019
+- Preparatory classes, Mathematics, physics and mechanics. ESSTI, 2018
+
+#### Interests
+
+Hiking · Reading · Art · Photography · Car tuning · Electronics and home automation
 
 #### Links
 
@@ -92,12 +101,21 @@ Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le fr
 - **career-hub** : Génération de CV ciblés par LLM, avec rendu PDF en Typst et recherche sémantique sur pgvector.
 - **Kanban d'orchestration d'agents** : Application de bureau Tauri pour piloter plusieurs sessions Claude Code depuis un tableau kanban.
 - **Éclore** : Application iOS d'aide à l'arrêt du tabac et du cannabis, conçue pour ne jamais culpabiliser.
+- **Appwrite Exceptions Translator** : Package NPM qui traduit les messages d'erreur techniques d'Appwrite en explications claires et exploitables.
+- **10K Step Path Generator** : Générateur d'itinéraires de marche en boucle pour un objectif de pas quotidien, avec carte Leaflet, export GPX et stockage local.
+- **Sports Events** : Plateforme web de gestion d'événements sportifs locaux : création, participation, géolocalisation et cartographie.
 - **Infrastructure IA auto-hébergée** : Inférence locale avec Ollama sur GPU, routée via Tailscale, services déployés avec Dokploy derrière Cloudflare Tunnel.
 
 #### Formation
 
 - Master of Science, Architecte logiciel, développeur d'application. ETNA, 2024
 - Bachelor, Responsable de projets web et mobile. ETNA, 2022
+- Cycle ingénieur, Systèmes automatisés. ESSTI, 2019
+- Classes préparatoires, Mathématiques, physique et mécanique. ESSTI, 2018
+
+#### Centres d'intérêt
+
+Randonnée · Lecture · Art · Photographie · Préparation automobile · Électronique et domotique
 
 #### Liens
 
