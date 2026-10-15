@@ -359,7 +359,7 @@ a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
 }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 1rem; }
-  .hero__visual { order: -1; justify-self: start; width: min(70%, 340px); }
+  .hero__visual { order: -1; justify-self: center; width: min(70%, 340px); }
   .hero__text { padding: 2rem 0 1rem; }
   .social { position: static; margin: 0.5rem 0 0 -0.75rem; }
   .scrolldown { display: none; }
