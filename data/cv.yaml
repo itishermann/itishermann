@@ -407,6 +407,7 @@ projects:
     description:
       fr: Application iOS d'aide à l'arrêt du tabac et du cannabis, conçue pour ne jamais culpabiliser.
       en: iOS app that helps people quit smoking and cannabis, designed to never shame the user.
+    url: https://github.com/itishermann/eclore
     keywords: [SwiftUI, SwiftData]
     tags: [mobile]
   - id: appwrite-exceptions-translator
@@ -417,6 +418,7 @@ projects:
     url: https://www.npmjs.com/package/@itishermann/appwrite-exceptions-translator
     keywords: [TypeScript, Bun, Appwrite]
     tags: [backend, tooling]
+    cv: false
   - id: step-path-generator
     name: 10K Step Path Generator
     description:
@@ -425,13 +427,25 @@ projects:
     url: https://10k-steps.itishermann.me
     keywords: [Next.js, Leaflet, Bun]
     tags: [web]
+    cv: false
   - id: sports-events
     name: Sports Events
     description:
       fr: "Plateforme web de gestion d'événements sportifs locaux : création, participation, géolocalisation et cartographie."
       en: "Web platform for local sports events: creation, sign-up, geolocation and mapping."
+    url: https://github.com/itishermann/sports-events
     keywords: [React, Next.js, Spring Boot, MySQL]
     tags: [web, backend]
+    cv: false
+  - id: whats-the-weather
+    name: Whats The Weather
+    description:
+      fr: Application iOS de prévisions météo en temps réel, inspirée de l'app Météo, en SwiftUI avec les données OpenWeatherMap.
+      en: Real-time weather forecast iOS app, inspired by the Weather app, built in SwiftUI with OpenWeatherMap data.
+    url: https://gitlab.com/etna-projects/whats-the-weather
+    keywords: [Swift, SwiftUI, OpenWeatherMap]
+    tags: [mobile]
+    cv: false
   - id: home-ai
     name: { fr: Infrastructure IA auto-hébergée, en: Self-hosted AI infrastructure }
     description:
