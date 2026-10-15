@@ -9,6 +9,8 @@
   --accent-ink: #2f3399;
   --brush: #d5dbf0;
   --on-accent: #ffffff;
+  --ok: #1f9d57;
+  --danger: #b91c1c;
 
   --display: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
   --text: 'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
@@ -39,6 +41,8 @@
     --accent-ink: #c3c5ff;
     --brush: #1f2440;
     --on-accent: #10131c;
+    --ok: #45d08a;
+    --danger: #f87171;
     color-scheme: dark;
   }
 }
@@ -151,6 +155,24 @@ a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
 .hero__label { margin-top: 1.5rem; font-family: var(--display); font-size: var(--step-1); font-weight: 500; }
 .hero__summary { margin-top: 0.9rem; max-width: 56ch; color: var(--muted); }
 .hero__meta { margin-top: 0.75rem; color: var(--muted); font-size: var(--step--1); }
+.hero__status {
+  display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content;
+  margin: 0 0 1rem; padding: 0.3rem 0.75rem;
+  border: 1px solid var(--rule); border-radius: 999px;
+  background: var(--bg-2); color: var(--muted);
+  font-size: var(--step--1); font-weight: 500;
+}
+.hero__status::before {
+  content: ''; width: 0.5rem; height: 0.5rem; border-radius: 50%;
+  background: var(--ok); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 22%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero__status::before { animation: status-pulse 2.6s var(--ease-out) infinite; }
+}
+@keyframes status-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 22%, transparent); }
+  50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--ok) 6%, transparent); }
+}
 
 .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.75rem; margin-top: 2.5rem; }
 .btn {
@@ -277,7 +299,9 @@ a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
 .contact__submit { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; }
 .contact__status { margin: 0; font-size: var(--step--1); color: var(--muted); }
 .contact__status[data-state="ok"] { color: var(--accent-ink); }
-.contact__status[data-state="error"] { color: #d64545; }
+.contact__status[data-state="error"] { color: var(--danger); }
+.contact__alt { margin-top: 0.6rem; color: var(--muted); max-width: var(--measure); }
+.contact__note { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: var(--step--2); }
 .btn[disabled] { opacity: 0.55; pointer-events: none; }
 @media (max-width: 560px) { .contact__form { grid-template-columns: 1fr; } }
 /* Accès rapide flottant : relance vers le CV et le contact une fois le hero passé. */

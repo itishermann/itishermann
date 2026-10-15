@@ -16,6 +16,8 @@ const linkedin = profile('LinkedIn');
 const blog = profile('Blog');
 const [firstName, ...rest] = b.name.split(' ');
 const home = lang === 'fr' ? '/' : '/en/';
+const sinceYear = Math.min(...cv.work.map((w: any) => Number(String(w.start).slice(0, 4))));
+const sinceLabel = lang === 'fr' ? `Depuis ${sinceYear}` : `Since ${sinceYear}`;
 const ids = lang === 'fr'
   ? { work: 'parcours', skills: 'competences', projects: 'projets', education: 'formation', interests: 'centres-interet', contact: 'contact' }
   : { work: 'work', skills: 'skills', projects: 'projects', education: 'education', interests: 'interests', contact: 'contact' };
@@ -47,11 +49,12 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
   <main>
     <section class="hero" aria-labelledby="hello" data-section="top">
       <div class="hero__text">
+        {b.availability && <p class="hero__status">{L.available}</p>}
         <p class="eyebrow"><span>{L.hello}</span><span class="eyebrow__other" lang={other}>{O.hello}</span></p>
         <h1 id="hello" class="hero__title">{L.iam} <span class="accent">{firstName}</span> {rest.join(' ')}</h1>
         <p class="hero__label">{t(b.label, lang)}</p>
         <p class="hero__summary">{t(b.summary, lang)}</p>
-        <p class="hero__meta">{b.location.city}, France. {t(b.remote, lang)}.</p>
+        <p class="hero__meta">{sinceLabel}. {b.location.city}, France. {t(b.remote, lang)}.</p>
         <div class="cta">
           <a class="btn" href={resumeHref(lang)} download>{L.resume}</a>
           <a class="textlink" href={`#${ids.contact}`}>{L.contactCta}</a>
@@ -202,6 +205,7 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
       <p class="eyebrow">{L.eyebrow.contact}</p>
       <h2 id="contact-title">{L.contactTitle}</h2>
       <p class="section__lead">{L.contactLead}</p>
+      {linkedin && <p class="contact__alt">{L.contactAlt}<a class="textlink" href={linkedin.url} rel="me">{L.contactAltLink}</a>.</p>}
     </div>
     <form
       class="contact__form"
@@ -227,6 +231,7 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
         <label>{L.form.hp}<input type="text" name="__mf_hp" tabindex="-1" autocomplete="off" /></label>
       </p>
       <div class="cf-turnstile" data-sitekey="0x4AAAAAAFXaRyNnAwPTt0PQ" data-action="submit" data-theme="auto" data-size="flexible"></div>
+      <p class="contact__note">{L.form.spam}</p>
       <div class="contact__submit">
         <button class="btn" type="submit">{L.form.send}</button>
         <p class="contact__status" data-status role="status" aria-live="polite"></p>
