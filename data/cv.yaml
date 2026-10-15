@@ -93,6 +93,12 @@ work:
       - fr: Accompagnement de la migration de l'AS400 vers le nouvel ERP côté intégration.
         en: Support the AS400 to ERP migration on the integration side.
         tags: [integration]
+      - fr: "Automatisation Ansible du parc on-premise : mises à jour Java, déploiement d'agents d'ordonnancement (VTOM) et de métriques (Telegraf), vérification et remédiation de CVE."
+        en: "Ansible automation across the on-premise estate: Java updates, scheduling (VTOM) and metrics (Telegraf) agent rollout, CVE assessment and remediation."
+        tags: [devops, linux]
+      - fr: Déploiement d'Outline sur AKS (Azure Kubernetes Service), en remplacement de MediaWiki.
+        en: Deployed Outline on AKS (Azure Kubernetes Service), replacing MediaWiki.
+        tags: [devops, kubernetes]
 
   - id: versusmind
     position:
@@ -173,6 +179,9 @@ work:
       - fr: Chaîne Notion vers GitHub pilotée par Claude Code. Un agent lit le ticket, pose ses questions dans Notion et ouvre une PR avec ses tests. La fusion reste validée par un humain. Ce dispositif a permis de livrer une fonctionnalité en production en une semaine.
         en: Notion to GitHub pipeline driven by Claude Code. An agent reads the ticket, asks its questions in Notion and opens a pull request with tests. A human still approves every merge. This setup took a feature from ticket to production in one week.
         tags: [ia, cicd, lead]
+      - fr: "Évolution de la chaîne de déploiement : scripts Ansible, puis Kamal, puis GitHub Actions vers des instances EC2."
+        en: "Deployment pipeline evolution: Ansible scripts, then Kamal, then GitHub Actions to EC2 instances."
+        tags: [devops, cicd, aws]
       - fr: Environnement de recette éphémère créé sur AWS pour chaque PR, supprimé au bout de 3 jours.
         en: Ephemeral review environment created on AWS for each pull request, removed after 3 days.
         tags: [aws, devops, cicd]
@@ -350,10 +359,10 @@ skills:
     keywords: [Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop]
   - id: devops
     name: { fr: DevOps et cloud, en: DevOps and cloud }
-    keywords: [Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Google Cloud, OVH, OpenStack, Cloudflare, Traefik]
+    keywords: [Docker, "Kubernetes (GKE, AKS)", Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik]
   - id: ops
     name: { fr: Systèmes et supervision, en: Systems and monitoring }
-    keywords: [Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Sentry, CloudWatch, OpenVAS]
+    keywords: [Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS]
   - id: quality
     name: { fr: Tests et qualité, en: Testing and quality }
     keywords: [Playwright, Detox, Selenium, SonarQube]

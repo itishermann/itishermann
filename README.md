@@ -30,8 +30,8 @@ What defines me most is adaptability: I pick up whichever language, framework an
 - **Front-end, mobile and desktop**: TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI
 - **Back-end**: Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite
 - **CMS and e-commerce**: Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
-- **DevOps and cloud**: Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
-- **Systems and monitoring**: Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Sentry, CloudWatch, OpenVAS
+- **DevOps and cloud**: Docker, Kubernetes (GKE, AKS), Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
+- **Systems and monitoring**: Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS
 - **Testing and quality**: Playwright, Detox, Selenium, SonarQube
 - **Applied AI**: Claude Code, AI agents, MCP, Ollama, LLM orchestration
 
@@ -91,8 +91,8 @@ Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le fr
 - **Front-end, mobile et desktop** : TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI
 - **Back-end** : Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite
 - **CMS et e-commerce** : Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
-- **DevOps et cloud** : Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
-- **Systèmes et supervision** : Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Sentry, CloudWatch, OpenVAS
+- **DevOps et cloud** : Docker, Kubernetes (GKE, AKS), Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
+- **Systèmes et supervision** : Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS
 - **Tests et qualité** : Playwright, Detox, Selenium, SonarQube
 - **IA appliquée** : Claude Code, AI agents, MCP, Ollama, LLM orchestration
 
