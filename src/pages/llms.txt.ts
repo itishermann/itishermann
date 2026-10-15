@@ -17,7 +17,7 @@ export const GET = () => {
 - [English](https://itishermann.me/cv/hermann-kao-cv-en.pdf)
 
 ## Contact
-- Email: ${b.email}
+- Contact form: ${b.website}/#contact
 ${(b.profiles || []).map((p: any) => `- ${p.network}: ${p.url}`).join('\n')}
 `;
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });

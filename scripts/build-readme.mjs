@@ -94,7 +94,7 @@ function section(lang) {
     linkedin && `[LinkedIn](${linkedin.url})`,
     `[${L.resume}](${SITE}/cv/hermann-kao-cv-${lang}.pdf)`,
     `[${L.cvOther}](${SITE}/cv/hermann-kao-cv-${other}.pdf)`,
-    `[${b.email}](mailto:${b.email})`,
+    `[Contact](${lang === 'fr' ? `${SITE}/#contact` : `${SITE}/en/#contact`})`,
   ].filter(Boolean);
   lines.push(`#### ${L.links}`, '', links.join(' · '), '');
   return lines.join('\n');

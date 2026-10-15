@@ -60,7 +60,7 @@
     "basics": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name", "label", "greeting", "email", "summary", "location"],
+      "required": ["name", "label", "greeting", "summary", "location"],
       "properties": {
         "name": { "type": "string" },
         "label": { "$ref": "#/$defs/i18n" },

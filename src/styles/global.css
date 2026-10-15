@@ -261,8 +261,25 @@ a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
 
 /* Contact */
 .contact { padding-bottom: 3rem; }
-.contact__mail { font-family: var(--display); font-size: clamp(1.6rem, 5vw, 3.75rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; overflow-wrap: anywhere; }
-.contact__mail a { text-decoration: none; background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 3px no-repeat; padding-bottom: 0.1em; }
+/* Formulaire de contact */
+.contact__form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.25rem; max-width: 42rem; margin-top: 2.25rem; }
+.field { display: grid; gap: 0.45rem; }
+.field:not(.field--half), .contact__form .cf-turnstile, .contact__submit { grid-column: 1 / -1; }
+.contact__form label { font-family: var(--display); font-size: var(--step--2); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.contact__form input, .contact__form textarea {
+  width: 100%; font: inherit; color: var(--ink);
+  background: var(--bg-2); border: 1px solid var(--rule); border-radius: 3px;
+  padding: 0.7rem 0.85rem; transition: border-color 0.15s var(--ease-out), background-color 0.15s;
+}
+.contact__form textarea { resize: vertical; min-height: 7rem; }
+.contact__form input:focus-visible, .contact__form textarea:focus-visible { outline: none; border-color: var(--accent); background: var(--bg); }
+.contact__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact__submit { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; }
+.contact__status { margin: 0; font-size: var(--step--1); color: var(--muted); }
+.contact__status[data-state="ok"] { color: var(--accent-ink); }
+.contact__status[data-state="error"] { color: #d64545; }
+.btn[disabled] { opacity: 0.55; pointer-events: none; }
+@media (max-width: 560px) { .contact__form { grid-template-columns: 1fr; } }
 /* Accès rapide flottant : relance vers le CV et le contact une fois le hero passé. */
 .dock {
   position: fixed; z-index: 15; right: var(--gutter); bottom: 1.5rem;
