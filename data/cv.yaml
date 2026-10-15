@@ -13,14 +13,14 @@
 
 meta:
   version: 1
-  updated: "2026-10-14"
+  updated: "2026-10-15"
   site: https://itishermann.me
 
 basics:
   name: Hermann Kao
   label:
-    fr: Développeur fullstack JavaScript / TypeScript, orienté DevOps
-    en: Fullstack JavaScript / TypeScript developer with a DevOps focus
+    fr: Développeur polyvalent, du produit à l'infrastructure
+    en: Versatile developer, from product to infrastructure
   greeting:
     fr: Salut, moi c'est Hermann.
     en: Hi, I'm Hermann.
@@ -38,18 +38,21 @@ basics:
     en: Hybrid in Saint-Étienne or fully remote
   summary:
     fr: >-
-      Je développe des applications web et mobiles en TypeScript depuis 2020, et
-      je m'occupe aussi de ce qui tourne en dessous : CI/CD, Kubernetes, AWS,
-      supervision. J'ai souvent été le seul technique d'un produit, du backend à
-      l'app mobile en passant par l'infra. Depuis 2025, j'intègre des agents IA
+      Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage,
+      le framework et la couche dont le produit a besoin. Au quotidien en
+      TypeScript, sur le web comme le mobile, mais aussi à l'aise en Java, C#,
+      Rust, Swift ou Python selon le contexte. Je vais du produit à
+      l'infrastructure (CI/CD, Kubernetes, cloud, supervision) et j'ai souvent
+      été le seul technique d'un produit. Depuis 2025, j'intègre des agents IA
       dans les chaînes de livraison, du ticket jusqu'à la pull request testée.
     en: >-
-      I have been building web and mobile apps in TypeScript since 2020, and I
-      also take care of what runs underneath: CI/CD, Kubernetes, AWS and
-      monitoring. I have often been the only engineer on a product, covering the
-      backend, the mobile app and the infrastructure. Since 2025 I have been
-      wiring AI agents into delivery pipelines, from the ticket to a tested pull
-      request.
+      What defines me most is adaptability: I pick up whichever language,
+      framework and layer a product needs. Day to day in TypeScript, on web and
+      mobile, but equally at ease in Java, C#, Rust, Swift or Python depending on
+      the context. I work from the product down to the infrastructure (CI/CD,
+      Kubernetes, cloud, monitoring) and have often been a product's only
+      engineer. Since 2025 I have been wiring AI agents into delivery pipelines,
+      from the ticket to a tested pull request.
   profiles:
     - network: GitHub
       username: itishermann
@@ -117,9 +120,15 @@ work:
       - fr: TMA WordPress et PrestaShop pour un e-commerçant du vitrage, dont l'administration du serveur (Debian, Cloudflare Tunnels, durcissement SSH).
         en: WordPress and PrestaShop maintenance for a glazing e-retailer, including server administration (Debian, Cloudflare Tunnels, SSH hardening).
         tags: [web, php, linux, devops]
+      - fr: Interfaces de télétransmission de feuilles de soins vers les services de l'État, avec flux normés et contraintes de conformité.
+        en: Health-claim transmission interfaces to government services, with standardized flows and compliance constraints.
+        tags: [backend, integration]
       - fr: Mise en place d'une CI/CD de déploiement automatisé pour une application Flutter.
         en: Set up automated CI/CD deployment for a Flutter application.
         tags: [devops, mobile, cicd]
+      - fr: Outillage interne de génération automatisée de rapports d'activité et de feuilles de temps multi-projets à partir des API Azure DevOps.
+        en: Internal tooling that generates activity reports and multi-project timesheets from the Azure DevOps APIs.
+        tags: [tooling, devops]
       - fr: Participation à un projet interne d'orchestration d'agents IA.
         en: Contributed to an internal AI agent orchestration project.
         tags: [ia]
@@ -133,8 +142,8 @@ work:
       fr: Développeur mobile, puis fullstack, puis architecte logiciel
       en: Mobile developer, then fullstack developer, then software architect
     organization:
-      fr: The After Cancer, application d'accompagnement santé (Portugal)
-      en: The After Cancer, health support app (Portugal)
+      fr: The After Cancer, application d'accompagnement santé (États-Unis)
+      en: The After Cancer, health support app (United States)
     contract:
       fr: Freelance
       en: Freelance
@@ -171,16 +180,30 @@ work:
       fr: Développeur freelance
       en: Freelance developer
     organization:
-      fr: Missions courtes pour des startups et studios
-      en: Short assignments for startups and studios
+      fr: Missions courtes pour des studios et startups
+      en: Short assignments for studios and startups
     contract:
       fr: Freelance
       en: Freelance
     start: 2023-01
     end: 2024-12
-    tags: [web, mobile]
-    # TODO(hermann) : décrire ces missions (sans nommer les clients).
-    highlights: []
+    tags: [web, mobile, backend, react-native]
+    highlights:
+      - fr: "IPLAYAGAIN : application mobile React Native, intégration de SDK de monétisation tiers (IronSource, Firebase, Facebook) et conformité App Tracking Transparency iOS."
+        en: "IPLAYAGAIN: React Native mobile app, integration of third-party monetization SDKs (IronSource, Firebase, Facebook) and iOS App Tracking Transparency compliance."
+        tags: [mobile, react-native]
+      - fr: "Clone (ex Not So Dark) : backoffice de gestion, messagerie temps réel et documentation d'API, en architecture hexagonale."
+        en: "Clone (formerly Not So Dark): management back office, real-time messaging and API documentation, in a hexagonal architecture."
+        tags: [web, backend, architecture]
+      - fr: "Novéup : webapp de robo-assistance pour personnes âgées, avec visioconférence et appels temps réel (LiveKit)."
+        en: "Novéup: robo-assistance web app for elderly people, with real-time video and audio calls (LiveKit)."
+        tags: [web, backend]
+      - fr: "SideApps : application Flutter, intégration Firebase et Facebook, mise en conformité du suivi publicitaire iOS 14+."
+        en: "SideApps: Flutter application, Firebase and Facebook integration, iOS 14+ ad-tracking compliance."
+        tags: [mobile]
+      - fr: "KatGames : application de jeux multiplateforme React Native, authentification Google OAuth, CI/CD Docker et GitHub Actions."
+        en: "KatGames: cross-platform React Native games app, Google OAuth authentication, Docker and GitHub Actions CI/CD."
+        tags: [mobile, web]
 
   - id: nobo
     position:
@@ -200,9 +223,27 @@ work:
       - fr: Migration du déploiement vers Argo CD sur GKE, gestion de Google Cloud et des serveurs OVH.
         en: Moved deployments to Argo CD on GKE and managed Google Cloud and OVH servers.
         tags: [devops, kubernetes, gcp]
+      - fr: Optimisation des pipelines GitLab CI et Docker sur plusieurs codebases, avec migration vers une organisation monorepo.
+        en: Optimized GitLab CI and Docker pipelines across several codebases, with a migration to a monorepo organization.
+        tags: [devops, cicd]
+      - fr: Intégration de RabbitMQ pour les échanges asynchrones entre services.
+        en: Integrated RabbitMQ for asynchronous communication between services.
+        tags: [backend]
+      - fr: Collecte des erreurs de production (Sentry) et mise en conformité RGPD.
+        en: Set up production error tracking (Sentry) and GDPR compliance.
+        tags: [ops, devops]
+      - fr: Migration de la chaîne de tests Selenium vers Playwright, avec tests end-to-end mobiles Detox.
+        en: Migrated the test suite from Selenium to Playwright, with Detox for mobile end-to-end tests.
+        tags: [cicd]
+      - fr: Développement d'un backoffice de gestion et d'un funnel d'acquisition client.
+        en: Built a management back office and a customer acquisition funnel.
+        tags: [web, backend]
       - fr: Migration de deux applications React Native d'un monorepo Expo 52 vers deux apps Expo 57 indépendantes, en architecture hexagonale.
         en: Migrated two React Native apps from an Expo 52 monorepo to two independent Expo 57 apps with a hexagonal architecture.
         tags: [mobile, react-native, architecture]
+      - fr: Applications mobiles React Native avec géolocalisation, lecture de QR codes et de tags NFC, et stockage local chiffré.
+        en: React Native mobile apps with geolocation, QR code and NFC tag scanning, and encrypted local storage.
+        tags: [mobile, react-native]
       - fr: File d'attente SQLite hors ligne pour fiabiliser la validation des prestations, qui déclenche la facturation.
         en: Offline SQLite outbox so that service validation, which triggers billing, survives poor connectivity.
         tags: [mobile, architecture]
@@ -219,9 +260,17 @@ work:
       en: Freelance
     start: 2021-04
     end: 2022-10
-    tags: [linux, devops]
-    # TODO(hermann) : préciser les missions.
-    highlights: []
+    tags: [linux, devops, kubernetes]
+    highlights:
+      - fr: Infrastructure OpenStack et cluster Kubernetes montés from scratch.
+        en: OpenStack infrastructure and a Kubernetes cluster built from scratch.
+        tags: [linux, kubernetes, devops]
+      - fr: Accès distant sécurisé (OpenVPN) et chaîne d'intégration continue pour les applications internes.
+        en: Secure remote access (OpenVPN) and a continuous integration pipeline for internal applications.
+        tags: [devops, linux]
+      - fr: Hébergement web et VPS mutualisé (Plesk, WHMCS), avec provisionnements automatisés en Python.
+        en: Shared web and VPS hosting (Plesk, WHMCS), with automated provisioning in Python.
+        tags: [linux, devops]
 
   - id: nobo-internship
     position:
@@ -241,6 +290,15 @@ work:
       - fr: Mise en place du déploiement automatisé avec tests sur Bitbucket et Jenkins.
         en: Set up automated, tested deployments with Bitbucket and Jenkins.
         tags: [cicd, devops]
+      - fr: Déploiement d'une stack ELK pour la centralisation et l'analyse des logs applicatifs.
+        en: Deployed an ELK stack to centralize and analyze application logs.
+        tags: [ops, devops]
+      - fr: Dockerisation des microservices et intégration de SonarQube dans la chaîne de qualité.
+        en: Dockerized the microservices and added SonarQube to the quality pipeline.
+        tags: [cicd, devops]
+      - fr: Audits de vulnérabilités (OpenVAS) et remédiation.
+        en: Vulnerability audits (OpenVAS) and remediation.
+        tags: [devops]
 
 education:
   - institution: ETNA
@@ -264,20 +322,23 @@ education:
 
 skills:
   - id: frontend
-    name: { fr: Front-end et mobile, en: Front-end and mobile }
-    keywords: [TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI]
+    name: { fr: "Front-end, mobile et desktop", en: "Front-end, mobile and desktop" }
+    keywords: [TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI]
   - id: backend
     name: { fr: Back-end, en: Back-end }
-    keywords: [Node.js, PHP, Python, .NET, REST, RabbitMQ, Pub/Sub, PostgreSQL, MySQL]
+    keywords: [Node.js, NestJS, Express, PHP, Python, "Java (Spring, Vaadin)", .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite]
   - id: cms
     name: { fr: CMS et e-commerce, en: CMS and e-commerce }
     keywords: [Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop]
   - id: devops
     name: { fr: DevOps et cloud, en: DevOps and cloud }
-    keywords: [Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, AWS, Google Cloud, OVH, Cloudflare]
+    keywords: [Docker, Kubernetes (GKE), Argo CD, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Google Cloud, OVH, OpenStack, Cloudflare, Traefik]
   - id: ops
     name: { fr: Systèmes et supervision, en: Systems and monitoring }
-    keywords: [Linux (Debian), Bash, ELK, Loki / Grafana, Sentry, CloudWatch]
+    keywords: [Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Sentry, CloudWatch, OpenVAS]
+  - id: quality
+    name: { fr: Tests et qualité, en: Testing and quality }
+    keywords: [Playwright, Detox, Selenium, SonarQube]
   - id: ai
     name: { fr: IA appliquée, en: Applied AI }
     keywords: [Claude Code, AI agents, MCP, Ollama, LLM orchestration]
@@ -289,9 +350,7 @@ languages:
     fluency: { fr: "professionnel, TOEIC 925/990", en: "professional, TOEIC 925/990" }
 
 certificates:
-  - name: { fr: McKinsey Forward (formation en ligne), en: McKinsey Forward (online program) }
-  - name: { fr: "ISC2 Certified in Cybersecurity (formation suivie)", en: "ISC2 Certified in Cybersecurity (training completed)" }
-    cv: false
+  - name: { fr: McKinsey Forward (communication et leadership), en: McKinsey Forward (communication and leadership) }
 
 projects:
   - id: career-hub
