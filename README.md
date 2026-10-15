@@ -37,7 +37,7 @@ What defines me most is adaptability: I pick up whichever language, framework an
 
 #### Side projects
 
-- **career-hub**: LLM-generated targeted resumes, rendered to PDF with Typst, with semantic search on pgvector.
+- **[career-hub](https://github.com/itishermann/career-hub)**: LLM-generated targeted resumes, rendered to PDF with Typst, with semantic search on pgvector.
 - **Agent orchestration kanban**: Tauri desktop app to run several Claude Code sessions from a kanban board.
 - **[Éclore](https://github.com/itishermann/eclore)**: iOS app that helps people quit smoking and cannabis, designed to never shame the user.
 - **[Appwrite Exceptions Translator](https://www.npmjs.com/package/@itishermann/appwrite-exceptions-translator)**: NPM package that turns Appwrite's technical error messages into clear, actionable explanations.
@@ -99,7 +99,7 @@ Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le fr
 
 #### Projets perso
 
-- **career-hub** : Génération de CV ciblés par LLM, avec rendu PDF en Typst et recherche sémantique sur pgvector.
+- **[career-hub](https://github.com/itishermann/career-hub)** : Génération de CV ciblés par LLM, avec rendu PDF en Typst et recherche sémantique sur pgvector.
 - **Kanban d'orchestration d'agents** : Application de bureau Tauri pour piloter plusieurs sessions Claude Code depuis un tableau kanban.
 - **[Éclore](https://github.com/itishermann/eclore)** : Application iOS d'aide à l'arrêt du tabac et du cannabis, conçue pour ne jamais culpabiliser.
 - **[Appwrite Exceptions Translator](https://www.npmjs.com/package/@itishermann/appwrite-exceptions-translator)** : Package NPM qui traduit les messages d'erreur techniques d'Appwrite en explications claires et exploitables.
