@@ -101,44 +101,48 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
         <p class="section__lead">{L.workIntro}</p>
       </div>
 
-      <div class="work__grid" style={`--lanes:${tl.lanes}`}>
-        <!-- Ruban temporel : axe des années + barres de durée. Deux barres côte à côte = missions simultanées. -->
-        <div class="ribbon">
-          <div class="ribbon__chart" aria-hidden="true">
-            {tl.years.map((y) => <span class="ribbon__year" style={`--t:${y.topPct}`}>{y.year}</span>)}
-            {tl.bars.map((bar) => (
-              <span
-                class:list={['ribbon__bar', { ongoing: bar.ongoing }]}
-                data-bar={bar.id}
-                style={`--lane:${bar.lane};--top:${bar.topPct};--h:${bar.heightPct}`}
-              />
-            ))}
-          </div>
-          <p class="ribbon__key">{L.graphKey}</p>
+      <figure class="overview" aria-hidden="true">
+        <figcaption class="overview__legend">{L.overviewLegend}</figcaption>
+        <div class="overview__chart" style={`--lanes:${tl.lanes}`}>
+          {tl.bars.map((bar) => (
+            <span
+              class:list={['overview__bar', { ongoing: bar.ongoing }]}
+              data-bar={bar.id}
+              style={`--lane:${bar.lane};--x:${bar.leftPct};--w:${bar.widthPct}`}
+            />
+          ))}
+          {tl.years.map((y) => <span class="overview__year" style={`--x:${y.leftPct}`}>{y.year}</span>)}
         </div>
+      </figure>
+      <p class="sr-only">{L.overviewSummary(tl.lanes)}</p>
 
-        <ol class="roles">
-          {tl.rows.map((row, i) => {
-            const w = row.item;
-            return (
-              <li class:list={['role', { 'is-active': i === 0 }]} style={`--lane:${row.lane}`} data-role={w.id}>
-                <p class="role__date"><span class="role__dot" aria-hidden="true"></span><time datetime={w.start}>{range(w.start, w.end, lang)}</time></p>
-                <h3>{t(w.position, lang)}</h3>
-                <p class="role__org">
-                  {t(w.organization, lang)}
-                  {w.contract && <><br />{t(w.contract, lang)}{w.location && `, ${t(w.location, lang)}`}</>}
-                </p>
-                {w.summary && <p class="role__summary">{t(w.summary, lang)}</p>}
-                {w.highlights?.length > 0 && (
-                  <ul class="role__list">
-                    {w.highlights.map((h: any) => <li>{h[lang]}</li>)}
-                  </ul>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </div>
+      <ol class="roles">
+        {tl.rows.map((row, i) => {
+          const w = row.item;
+          const recent = i < 4;
+          const hl = (w.highlights ?? []) as any[];
+          const shown = recent ? 3 : 2;
+          return (
+            <li class:list={['role', { 'is-active': i === 0, 'is-old': !recent }]} data-role={w.id}>
+              <p class="role__date"><span class="role__dot" aria-hidden="true"></span><time datetime={w.start}>{range(w.start, w.end, lang)}</time></p>
+              <h3>{t(w.position, lang)}</h3>
+              <p class="role__org">
+                {t(w.organization, lang)}
+                {w.contract && <><br />{t(w.contract, lang)}{w.location && `, ${t(w.location, lang)}`}</>}
+              </p>
+              {w.summary && <p class="role__summary">{t(w.summary, lang)}</p>}
+              {hl.length > 0 && (
+                <ul class="role__list">
+                  {hl.map((h: any, j: number) => <li class:list={{ 'role__more': j >= shown }} hidden={j >= shown}>{h[lang]}</li>)}
+                </ul>
+              )}
+              {hl.length > shown && (
+                <button class="role__expand" type="button" aria-expanded="false" data-expand data-more={L.showMore(hl.length - shown)} data-less={L.showLess}>{L.showMore(hl.length - shown)}</button>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </section>
 
     <section id={ids.skills} class="section" aria-labelledby="skills-title" data-section={ids.skills}>
@@ -254,7 +258,7 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
     // Ruban au scroll : le poste lu au centre de l'écran s'active, et sa barre s'allume dans le ruban.
     const roles = [...document.querySelectorAll<HTMLElement>('.role')];
     const bars = new Map(
-      [...document.querySelectorAll<HTMLElement>('.ribbon__bar')].map((b) => [b.dataset.bar ?? '', b]),
+      [...document.querySelectorAll<HTMLElement>('.overview__bar')].map((b) => [b.dataset.bar ?? '', b]),
     );
     const roleIo = new IntersectionObserver((entries) => {
       for (const e of entries) {
@@ -266,6 +270,17 @@ const edTitle = lang === 'fr' ? 'Formation et langues' : 'Education and language
       }
     }, { rootMargin: '-45% 0px -50% 0px' });
     roles.forEach((r) => roleIo.observe(r));
+
+    // Postes : bouton « voir plus » qui déplie les highlights masqués.
+    document.querySelectorAll<HTMLButtonElement>('[data-expand]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const li = btn.closest('.role');
+        const expand = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(expand));
+        li?.querySelectorAll<HTMLElement>('.role__more').forEach((el) => { el.hidden = !expand; });
+        btn.textContent = expand ? (btn.dataset.less ?? '') : (btn.dataset.more ?? '');
+      });
+    });
 
     // Navigation : la section lue au milieu de l'écran est mise en avant dans le menu.
     const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-spy]')];
