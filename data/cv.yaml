@@ -156,11 +156,13 @@ work:
       fr: >-
         Recruté pour l'application mobile, j'ai repris ensuite le backend et
         l'infrastructure. Je suis aujourd'hui le seul technique du produit :
-        mobile, backend, backoffice, landing, infra et données.
+        mobile, backend, backoffice, landing, infra et données. L'application a
+        passé les 300 utilisateurs actifs quotidiens.
       en: >-
         Hired for the mobile app, I later took over the backend and the
         infrastructure. I am now the product's only engineer: mobile, backend,
-        back office, landing page, infrastructure and data.
+        back office, landing page, infrastructure and data. The app has grown
+        past 300 daily active users.
     highlights:
       - fr: Application React Native (Expo) avec OneSignal, CometChat, Google Calendar et l'intégration de Healthie, fournisseur de données de santé.
         en: React Native (Expo) app with OneSignal, CometChat, Google Calendar and an integration with Healthie, a health data provider.
@@ -168,8 +170,8 @@ work:
       - fr: Architecture AWS (EC2, IAM, logs) et API Gateway devant les prestataires externes (CometChat, Stripe, OneSignal, Healthie).
         en: AWS architecture (EC2, IAM, logging) with an API Gateway in front of external providers (CometChat, Stripe, OneSignal, Healthie).
         tags: [aws, devops, backend, api]
-      - fr: Chaîne Notion vers GitHub pilotée par Claude Code. Un agent lit le ticket, pose ses questions dans Notion et ouvre une PR avec ses tests. La fusion reste validée par un humain.
-        en: Notion to GitHub pipeline driven by Claude Code. An agent reads the ticket, asks its questions in Notion and opens a pull request with tests. A human still approves every merge.
+      - fr: Chaîne Notion vers GitHub pilotée par Claude Code. Un agent lit le ticket, pose ses questions dans Notion et ouvre une PR avec ses tests. La fusion reste validée par un humain. Ce dispositif a permis de livrer une fonctionnalité en production en une semaine.
+        en: Notion to GitHub pipeline driven by Claude Code. An agent reads the ticket, asks its questions in Notion and opens a pull request with tests. A human still approves every merge. This setup took a feature from ticket to production in one week.
         tags: [ia, cicd, lead]
       - fr: Environnement de recette éphémère créé sur AWS pour chaque PR, supprimé au bout de 3 jours.
         en: Ephemeral review environment created on AWS for each pull request, removed after 3 days.
@@ -219,9 +221,15 @@ work:
     start: 2021-08
     end: 2025-11
     tags: [mobile, devops, kubernetes, backend]
+    summary:
+      fr: >-
+        Une équipe de trois développeurs pour une plateforme à 2,5 M€ de
+        chiffre d'affaires.
+      en: >-
+        A three-developer team running a platform at 2.5 M€ in revenue.
     highlights:
-      - fr: Migration du déploiement vers Argo CD sur GKE, gestion de Google Cloud et des serveurs OVH.
-        en: Moved deployments to Argo CD on GKE and managed Google Cloud and OVH servers.
+      - fr: "Automatisation complète des mises en production et de staging : déploiement GitOps avec Argo CD sur GKE, gestion de Google Cloud et des serveurs OVH."
+        en: "Fully automated production and staging releases: GitOps deployment with Argo CD on GKE, managing Google Cloud and OVH servers."
         tags: [devops, kubernetes, gcp]
       - fr: Optimisation des pipelines GitLab CI et Docker sur plusieurs codebases, avec migration vers une organisation monorepo.
         en: Optimized GitLab CI and Docker pipelines across several codebases, with a migration to a monorepo organization.
