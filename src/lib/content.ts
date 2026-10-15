@@ -31,7 +31,7 @@ export const ui = {
     email: 'Écrire un mail',
     scroll: 'Mon parcours',
     work: 'Parcours',
-    workIntro: 'Les missions qui se chevauchent sont sur des branches parallèles.',
+    workIntro: 'Les missions qui se chevauchent apparaissent côte à côte.',
     skills: "Ce que j'utilise",
     projects: 'Projets perso',
     education: 'Formation',
@@ -41,8 +41,6 @@ export const ui = {
     cvLinks: 'CV en PDF',
     cvFr: 'français',
     cvEn: 'anglais',
-    footer: 'Ce site et mon CV en PDF sont générés depuis un seul fichier YAML.',
-    source: 'Voir la source',
     ongoing: 'en cours',
     photoAlt: 'Portrait de Hermann Kao',
     description: (label: string) => `Hermann Kao, ${label.toLowerCase()} basé à Saint-Étienne. Parcours, compétences et CV à télécharger.`,
@@ -66,7 +64,7 @@ export const ui = {
     email: 'Email me',
     scroll: 'My path',
     work: 'Work',
-    workIntro: 'Assignments that overlapped sit on parallel branches.',
+    workIntro: 'Overlapping assignments appear side by side.',
     skills: 'Tools I use',
     projects: 'Side projects',
     education: 'Education',
@@ -76,8 +74,6 @@ export const ui = {
     cvLinks: 'Resume as PDF',
     cvFr: 'French',
     cvEn: 'English',
-    footer: 'This site and my PDF resume are built from a single YAML file.',
-    source: 'View the source',
     ongoing: 'ongoing',
     photoAlt: 'Portrait of Hermann Kao',
     description: (label: string) => `Hermann Kao, ${label.toLowerCase()} based in Saint-Étienne, France. Experience, skills and downloadable resume.`,
@@ -88,10 +84,10 @@ export const photoExists = cv.basics.photo && existsSync(resolve(ROOT, 'public',
 export const resumeHref = (lang: Lang) => `/cv/hermann-kao-cv-${lang}.pdf`;
 export const range = (s: string, e: string | undefined, lang: Lang) => formatRange(s, e, lang);
 
-// ---------- Graphe Git du parcours ----------
-// Chaque expérience reçoit une « voie ». Deux expériences qui se chevauchent dans le temps
-// ne partagent jamais une voie. Pour chaque ligne (une expérience), on calcule quelles voies
-// sont actives en haut et en bas de la ligne.
+// ---------- Ruban temporel du parcours ----------
+// Chaque expérience reçoit une « voie » : deux expériences qui se chevauchent
+// dans le temps n'en partagent jamais une. Le ruban place chaque poste sur un
+// axe d'années (le plus récent en haut) ; deux barres côte à côte = simultané.
 const toNum = (ym: string) => {
   const [y, m] = ym.split('-').map(Number);
   return y * 12 + (m - 1);
@@ -102,10 +98,17 @@ const now = (() => {
 })();
 
 type Work = (typeof cv.work)[number];
-export interface Row { item: Work; lane: number; above: boolean[]; below: boolean[] }
+export interface Bar { id: string; lane: number; topPct: number; heightPct: number; ongoing: boolean }
+export interface TimelineRow { item: Work; lane: number }
 
-export function graph(): { rows: Row[]; lanes: number } {
+export function timeline(): {
+  bars: Bar[];
+  rows: TimelineRow[];
+  years: { year: number; topPct: number }[];
+  lanes: number;
+} {
   const items = cv.work.map((w: Work) => ({ w, s: toNum(w.start), e: w.end ? toNum(w.end) : now }));
+  // Affectation des voies : par ordre de début, chaque poste prend la première voie libre.
   const asc = [...items].sort((a, b) => a.s - b.s);
   const laneEnds: number[] = [];
   const laneOf = new Map<Work, number>();
@@ -116,26 +119,32 @@ export function graph(): { rows: Row[]; lanes: number } {
     laneOf.set(it.w, lane);
   }
   const lanes = laneEnds.length;
-  const desc = [...items].sort((a, b) => b.s - a.s);
-  // Expérience qui occupe une voie à une date donnée (au plus une, par construction).
-  const occ = (lane: number, time: number) =>
-    items.find((it) => laneOf.get(it.w) === lane && it.s <= time && time <= it.e)?.w;
-  // Un segment n'est tracé que si c'est la même expérience des deux côtés :
-  // deux missions successives sur une même voie ne sont pas reliées.
-  const same = (lane: number, a: number, b: number) => {
-    const x = occ(lane, a);
-    return !!x && x === occ(lane, b);
-  };
+  const spanStart = Math.min(...items.map((i) => i.s));
+  const spanEnd = now;
+  const span = Math.max(1, spanEnd - spanStart);
+  // Le plus récent en haut (0 %), le plus ancien en bas (100 %).
+  const pct = (tm: number) => ((spanEnd - tm) / span) * 100;
+  const clamp = (n: number) => Math.min(100, Math.max(0, n));
 
-  const rows = desc.map((it, i) => {
-    const lane = laneOf.get(it.w)!;
-    const tHere = it.s;
-    const tAbove = i === 0 ? now : desc[i - 1].s;
-    const tBelow = i === desc.length - 1 ? -Infinity : desc[i + 1].s;
-    const above = Array.from({ length: lanes }, (_, l) => same(l, tHere, tAbove));
-    // Sous le nœud, sa voie s'arrête : c'est le début de l'expérience.
-    const below = Array.from({ length: lanes }, (_, l) => l !== lane && same(l, tHere, tBelow));
-    return { item: it.w, lane, above, below };
-  });
-  return { rows, lanes };
+  const bars: Bar[] = [...items]
+    .sort((a, b) => b.e - a.e)
+    .map((it) => ({
+      id: it.w.id,
+      lane: laneOf.get(it.w)!,
+      topPct: clamp(pct(it.e)),
+      heightPct: Math.max(3, clamp(((it.e - it.s) / span) * 100)),
+      ongoing: !it.w.end,
+    }));
+
+  const years: { year: number; topPct: number }[] = [];
+  for (let y = Math.floor(spanEnd / 12); y >= Math.floor(spanStart / 12); y--) {
+    const p = pct(y * 12);
+    if (p >= -2 && p <= 102) years.push({ year: y, topPct: clamp(p) });
+  }
+
+  const rows: TimelineRow[] = [...items]
+    .sort((a, b) => b.s - a.s)
+    .map((it) => ({ item: it.w, lane: laneOf.get(it.w)! }));
+
+  return { bars, rows, years, lanes };
 }
