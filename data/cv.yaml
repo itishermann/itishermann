@@ -96,6 +96,15 @@ work:
       - fr: "Automatisation Ansible du parc on-premise : mises à jour Java, déploiement d'agents d'ordonnancement (VTOM) et de métriques (Telegraf), vérification et remédiation de CVE."
         en: "Ansible automation across the on-premise estate: Java updates, scheduling (VTOM) and metrics (Telegraf) agent rollout, CVE assessment and remediation."
         tags: [devops, linux]
+      - fr: Développement d'automatisations d'ordonnancement sous VTOM (Absyss).
+        en: Developed scheduling automations with VTOM (Absyss).
+        tags: [devops, tooling]
+      - fr: Réalisation d'audits de sécurité en boîte noire (blackbox).
+        en: Ran blackbox security audits.
+        tags: [devops, security]
+      - fr: Déploiement de Cognos (reporting IBM).
+        en: Deployed Cognos (IBM reporting).
+        tags: [devops, integration]
       - fr: Déploiement d'Outline sur AKS (Azure Kubernetes Service), en remplacement de MediaWiki.
         en: Deployed Outline on AKS (Azure Kubernetes Service), replacing MediaWiki.
         tags: [devops, kubernetes]
