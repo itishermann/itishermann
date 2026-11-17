@@ -4,7 +4,7 @@
 
 ### Hi, I'm Hermann.
 
-**Versatile developer, from product to infrastructure**, based in Saint-Étienne, France.
+**Versatile developer, from product to infrastructure**, based in Le Chambon-Feugerolles, France.
 
 What defines me most is adaptability: I pick up whichever language, framework and layer a product needs. Day to day in TypeScript, on web and mobile, but equally at ease in Java, C#, Rust, Swift or Python depending on the context. I work from the product down to the infrastructure (CI/CD, Kubernetes, cloud, monitoring) and have often been a product's only engineer. Since 2025 I have been wiring AI agents into delivery pipelines, from the ticket to a tested pull request.
 
@@ -59,14 +59,14 @@ Hiking · Reading · Art · Photography · Car tuning · Electronics and home au
 
 #### Links
 
-[Website](https://itishermann.me/en/) · [Blog](https://itishermann.hashnode.dev) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [Resume (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [CV in French (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [Contact](https://itishermann.me/en/#contact)
+[Website](https://itishermann.me/en/) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [Resume (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [CV in French (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [Contact](https://itishermann.me/en/#contact)
 
 <details>
 <summary>Version française</summary>
 
 ### Salut, moi c'est Hermann.
 
-**Développeur polyvalent, du produit à l'infrastructure**, basé à Saint-Étienne, France.
+**Développeur polyvalent, du produit à l'infrastructure**, basé à Le Chambon-Feugerolles, France.
 
 Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le framework et la couche dont le produit a besoin. Au quotidien en TypeScript, sur le web comme le mobile, mais aussi à l'aise en Java, C#, Rust, Swift ou Python selon le contexte. Je vais du produit à l'infrastructure (CI/CD, Kubernetes, cloud, supervision) et j'ai souvent été le seul technique d'un produit. Depuis 2025, j'intègre des agents IA dans les chaînes de livraison, du ticket jusqu'à la pull request testée.
 
@@ -121,7 +121,7 @@ Randonnée · Lecture · Art · Photographie · Préparation automobile · Élec
 
 #### Liens
 
-[Site](https://itishermann.me) · [Blog](https://itishermann.hashnode.dev) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [CV (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [CV en anglais (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [Contact](https://itishermann.me/#contact)
+[Site](https://itishermann.me) · [LinkedIn](https://www.linkedin.com/in/itishermann) · [CV (PDF)](https://itishermann.me/cv/hermann-kao-cv-fr.pdf) · [CV en anglais (PDF)](https://itishermann.me/cv/hermann-kao-cv-en.pdf) · [Contact](https://itishermann.me/#contact)
 
 </details>
 

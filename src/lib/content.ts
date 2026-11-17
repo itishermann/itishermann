@@ -63,7 +63,7 @@ export const ui = {
     cvEn: 'anglais',
     ongoing: 'en cours',
     photoAlt: 'Portrait de Hermann Kao',
-    description: (label: string) => `Hermann Kao, ${label.toLowerCase()} basé à Saint-Étienne. Parcours, compétences et CV à télécharger.`,
+    description: (label: string) => `Hermann Kao, ${label.toLowerCase()} basé au Chambon-Feugerolles, près de Saint-Étienne. Parcours, compétences et CV à télécharger.`,
   },
   en: {
     otherLang: 'Français',
@@ -116,7 +116,7 @@ export const ui = {
     cvEn: 'English',
     ongoing: 'ongoing',
     photoAlt: 'Portrait of Hermann Kao',
-    description: (label: string) => `Hermann Kao, ${label.toLowerCase()} based in Saint-Étienne, France. Experience, skills and downloadable resume.`,
+    description: (label: string) => `Hermann Kao, ${label.toLowerCase()} based in Le Chambon-Feugerolles, near Saint-Étienne, France. Experience, skills and downloadable resume.`,
   },
 } as const;
 

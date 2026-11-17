@@ -27,7 +27,7 @@ basics:
   website: https://itishermann.me
   photo: /photo.png
   location:
-    city: Saint-Étienne
+    city: Le Chambon-Feugerolles
     region: Auvergne-Rhône-Alpes
     countryCode: FR
   availability:
@@ -60,9 +60,6 @@ basics:
     - network: LinkedIn
       username: itishermann
       url: https://www.linkedin.com/in/itishermann
-    - network: Blog
-      username: itishermann
-      url: https://itishermann.hashnode.dev
 
 work:
   - id: locam
