@@ -87,26 +87,29 @@ work:
         Part of the IT department's integration team, supporting the replacement
         of an AS400 system with a custom ERP built by an external vendor.
     highlights:
-      - fr: Gestion de l'API manager et des connexions aux services externes.
-        en: Run the API manager and the connections to external services.
+      - fr: "Interfaçage de l'ERP (IMX) avec les services externes (DocuSign, Ellisphere, CASA Fircosoft) au moyen de chaînes VTOM (Absyss)."
+        en: "Integrated the ERP (IMX) with external services (DocuSign, Ellisphere, CASA Fircosoft) through VTOM (Absyss) job chains."
+        tags: [integration, api, tooling]
+      - fr: Gestion de l'APIM (API manager) et des connexions aux services externes.
+        en: Run the APIM (API manager) and the connections to external services.
         tags: [integration, api]
+      - fr: Résolution d'incidents et de bugs sur les applicatifs et les flux d'intégration.
+        en: Incident and bug resolution on applications and integration flows.
+        tags: [integration, ops]
       - fr: Accompagnement de la migration de l'AS400 vers le nouvel ERP côté intégration.
         en: Support the AS400 to ERP migration on the integration side.
         tags: [integration]
-      - fr: "Automatisation Ansible du parc on-premise : mises à jour Java, déploiement d'agents d'ordonnancement (VTOM) et de métriques (Telegraf), vérification et remédiation de CVE."
-        en: "Ansible automation across the on-premise estate: Java updates, scheduling (VTOM) and metrics (Telegraf) agent rollout, CVE assessment and remediation."
+      - fr: "Automatisation Ansible du parc on-premise, majoritairement sous RHEL 7 à 9 : mises à jour Java, déploiement d'agents d'ordonnancement (VTOM) et de métriques (Telegraf), vérification et remédiation de CVE."
+        en: "Ansible automation across the on-premise estate, mostly RHEL 7 to 9: Java updates, scheduling (VTOM) and metrics (Telegraf) agent rollout, CVE assessment and remediation."
         tags: [devops, linux]
-      - fr: Développement d'automatisations d'ordonnancement sous VTOM (Absyss).
-        en: Developed scheduling automations with VTOM (Absyss).
-        tags: [devops, tooling]
       - fr: Réalisation d'audits de sécurité en boîte noire (blackbox).
         en: Ran blackbox security audits.
         tags: [devops, security]
       - fr: Déploiement de Cognos (reporting IBM).
         en: Deployed Cognos (IBM reporting).
         tags: [devops, integration]
-      - fr: Déploiement d'Outline sur AKS (Azure Kubernetes Service), en remplacement de MediaWiki.
-        en: Deployed Outline on AKS (Azure Kubernetes Service), replacing MediaWiki.
+      - fr: Mise en place d'un cluster Kubernetes on-premise pour les PoC, avec le déploiement d'Outline pour remplacer MediaWiki.
+        en: Set up an on-premise Kubernetes cluster for proofs of concept, and deployed Outline on it to replace MediaWiki.
         tags: [devops, kubernetes]
 
   - id: versusmind
@@ -377,10 +380,10 @@ skills:
     keywords: [Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop]
   - id: devops
     name: { fr: DevOps et cloud, en: DevOps and cloud }
-    keywords: [Docker, "Kubernetes (GKE, AKS)", Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik]
+    keywords: [Docker, "Kubernetes (GKE, on-premise)", Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik]
   - id: ops
     name: { fr: Systèmes et supervision, en: Systems and monitoring }
-    keywords: [Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS]
+    keywords: [Linux (RHEL, Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS]
   - id: quality
     name: { fr: Tests et qualité, en: Testing and quality }
     keywords: [TDD, Playwright, Detox, Selenium, SonarQube]
