@@ -31,6 +31,8 @@ function resolveForLang(raw, lang) {
   const site = b.website ? b.website.replace(/^https?:\/\//, '') : null;
   const contact = [
     `${b.location.city}, France`,
+    b.email,
+    b.phone,
     site,
     ...(b.profiles || []).map((p) => p.url.replace(/^https?:\/\/(www\.)?/, '')),
   ].filter(Boolean);
