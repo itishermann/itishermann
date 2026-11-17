@@ -10,14 +10,14 @@ What defines me most is adaptability: I pick up whichever language, framework an
 
 **Currently**
 
-- Application integrator and DevOps engineer, B2B equipment financing company (financial group)
+- Application integrator and DevOps engineer, LOCAM, B2B equipment financing (financial group)
 - Mobile developer, then fullstack developer, then software architect, The After Cancer, health support app (United States)
 
 #### Experience
 
 | When | Role | Where |
 |---|---|---|
-| Since Aug 2026 | Application integrator and DevOps engineer | B2B equipment financing company (financial group) |
+| Since Aug 2026 | Application integrator and DevOps engineer | LOCAM, B2B equipment financing (financial group) |
 | Jul 2025 – Sep 2026 | Fullstack developer | Versusmind, IT services company (Nancy) |
 | Since Apr 2025 | Mobile developer, then fullstack developer, then software architect | The After Cancer, health support app (United States) |
 | Jan 2023 – Dec 2024 | Freelance developer | Short assignments for studios and startups |
@@ -28,12 +28,12 @@ What defines me most is adaptability: I pick up whichever language, framework an
 #### Toolbox
 
 - **Front-end, mobile and desktop**: TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI
-- **Back-end**: Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite
+- **Back-end**: Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core, Blazor), REST, GraphQL, OpenAPI, Kafka, RabbitMQ, Pub/Sub, Tyk (APIM), PostgreSQL, MySQL, Prisma, SQLite
 - **CMS and e-commerce**: Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
-- **DevOps and cloud**: Docker, Kubernetes (GKE, AKS), Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
-- **Systems and monitoring**: Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS
-- **Testing and quality**: Playwright, Detox, Selenium, SonarQube
-- **Applied AI**: Claude Code, AI agents, MCP, Ollama, LLM orchestration
+- **DevOps and cloud**: Docker, Kubernetes (GKE, k3s on-premise), Argo CD, Ansible, Semaphore, VTOM, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
+- **Systems and monitoring**: Linux (RHEL, Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Grafana Alloy, Telegraf, Microsoft Fabric, Sentry, CloudWatch, OpenVAS
+- **Testing and quality**: TDD, Playwright, Detox, Selenium, SonarQube
+- **Applied AI**: Claude Code, Hermes Agent, AI agents, MCP, Ollama, LLM orchestration
 
 #### Side projects
 
@@ -72,14 +72,14 @@ Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le fr
 
 **En ce moment**
 
-- Intégrateur applicatif et DevOps, Société de financement d'équipements B2B (groupe financier)
+- Intégrateur applicatif et DevOps, LOCAM, financement d'équipements B2B (groupe financier)
 - Développeur mobile, puis fullstack, puis architecte logiciel, The After Cancer, application d'accompagnement santé (États-Unis)
 
 #### Parcours
 
 | Quand | Poste | Où |
 |---|---|---|
-| Depuis août 2026 | Intégrateur applicatif et DevOps | Société de financement d'équipements B2B (groupe financier) |
+| Depuis août 2026 | Intégrateur applicatif et DevOps | LOCAM, financement d'équipements B2B (groupe financier) |
 | juil. 2025 – sept. 2026 | Développeur fullstack | Versusmind, ESN (Nancy) |
 | Depuis avr. 2025 | Développeur mobile, puis fullstack, puis architecte logiciel | The After Cancer, application d'accompagnement santé (États-Unis) |
 | janv. 2023 – déc. 2024 | Développeur freelance | Missions courtes pour des studios et startups |
@@ -90,12 +90,12 @@ Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le fr
 #### Outils
 
 - **Front-end, mobile et desktop** : TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI
-- **Back-end** : Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite
+- **Back-end** : Node.js, NestJS, Express, PHP, Python, Java (Spring, Vaadin), .NET (ASP.NET Core, Blazor), REST, GraphQL, OpenAPI, Kafka, RabbitMQ, Pub/Sub, Tyk (APIM), PostgreSQL, MySQL, Prisma, SQLite
 - **CMS et e-commerce** : Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
-- **DevOps et cloud** : Docker, Kubernetes (GKE, AKS), Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
-- **Systèmes et supervision** : Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS
-- **Tests et qualité** : Playwright, Detox, Selenium, SonarQube
-- **IA appliquée** : Claude Code, AI agents, MCP, Ollama, LLM orchestration
+- **DevOps et cloud** : Docker, Kubernetes (GKE, k3s on-premise), Argo CD, Ansible, Semaphore, VTOM, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
+- **Systèmes et supervision** : Linux (RHEL, Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Grafana Alloy, Telegraf, Microsoft Fabric, Sentry, CloudWatch, OpenVAS
+- **Tests et qualité** : TDD, Playwright, Detox, Selenium, SonarQube
+- **IA appliquée** : Claude Code, Hermes Agent, AI agents, MCP, Ollama, LLM orchestration
 
 #### Projets perso
 

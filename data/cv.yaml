@@ -13,7 +13,7 @@
 
 meta:
   version: 1
-  updated: "2026-10-15"
+  updated: "2026-11-17"
   site: https://itishermann.me
 
 basics:
@@ -70,44 +70,77 @@ work:
       fr: Intégrateur applicatif et DevOps
       en: Application integrator and DevOps engineer
     organization:
-      fr: Société de financement d'équipements B2B (groupe financier)
-      en: B2B equipment financing company (financial group)
+      fr: LOCAM, financement d'équipements B2B (groupe financier)
+      en: LOCAM, B2B equipment financing (financial group)
     contract:
       fr: Freelance, portage salarial
       en: Freelance (umbrella company)
     location: Saint-Étienne
     start: 2026-08
-    tags: [devops, integration, backend]
+    tags: [devops, integration, backend, ia]
     summary:
       fr: >-
         Au sein de la DSI, dans l'équipe d'intégration qui accompagne le
-        remplacement d'un système AS400 par un ERP développé sur mesure par un
-        prestataire.
+        remplacement d'un système AS400 par iMX. La plupart de ces travaux sont
+        menés avec Claude Code, dans un cadre qui garde l'humain en contrôle.
       en: >-
         Part of the IT department's integration team, supporting the replacement
-        of an AS400 system with a custom ERP built by an external vendor.
+        of an AS400 system with iMX. Most of this work is done with Claude Code,
+        within a setup that keeps a human in control.
     highlights:
-      - fr: Gestion de l'API manager et des connexions aux services externes.
-        en: Run the API manager and the connections to external services.
+      - fr: "Ordonnancement VTOM (Absyss) autour d'iMX : interfaçage avec CASA Fircosoft, installation des mises à jour et des patchs d'iMX."
+        en: "VTOM (Absyss) scheduling around iMX: integration with CASA Fircosoft, installation of iMX updates and patches."
+        tags: [integration, tooling]
+      - fr: Interfaçage d'iMX avec DocuSign et Ellisphere.
+        en: Integrated iMX with DocuSign and Ellisphere.
         tags: [integration, api]
-      - fr: Accompagnement de la migration de l'AS400 vers le nouvel ERP côté intégration.
-        en: Support the AS400 to ERP migration on the integration side.
-        tags: [integration]
-      - fr: "Automatisation Ansible du parc on-premise : mises à jour Java, déploiement d'agents d'ordonnancement (VTOM) et de métriques (Telegraf), vérification et remédiation de CVE."
-        en: "Ansible automation across the on-premise estate: Java updates, scheduling (VTOM) and metrics (Telegraf) agent rollout, CVE assessment and remediation."
+      - fr: "Gestion de l'APIM Tyk : définitions OpenAPI des API qui exposent les services externes (KYC, scoring, paiement, données d'entreprise)."
+        en: "Run the Tyk APIM: OpenAPI definitions of the APIs that expose external services (KYC, scoring, payment, company data)."
+        tags: [integration, api]
+      - fr: Résolution d'incidents et de bugs sur iMX et les flux d'intégration, dont l'analyse de lenteurs d'API rejouées en recette avec compte rendu à l'éditeur.
+        en: Incident and bug resolution on iMX and integration flows, including API slowness investigations replayed in a test environment and reported to the vendor.
+        tags: [integration, ops]
+      - fr: "Tests automatisés Playwright du portail partenaires d'iMX : navigation, consultation des demandes, exports, et mesure des temps de réponse de l'API sous charge simultanée."
+        en: "Automated Playwright tests for the iMX partner portal: navigation, request lookup, exports, and API response-time measurement under concurrent load."
+        tags: [integration, cicd, web]
+      - fr: "Refonte de l'interface du portail de soumission et de suivi des CRA des prestataires externes, avec Claude Code : signature manuscrite du manager dans le navigateur, authentification Windows (.NET, Blazor, Oracle)."
+        en: "Redesigned the interface of the portal where external contractors submit and track their activity reports, with Claude Code: manager handwritten signature in the browser, Windows authentication (.NET, Blazor, Oracle)."
+        tags: [web, dotnet, ia]
+      - fr: Mise en place d'un cluster Kubernetes (k3s) on-premise pour les PoC, déployé par Ansible, avec le déploiement d'Outline pour remplacer MediaWiki.
+        en: Set up an on-premise Kubernetes (k3s) cluster for proofs of concept, deployed with Ansible, and deployed Outline on it to replace MediaWiki.
+        tags: [devops, kubernetes]
+      - fr: "Participation au PoC de supervision des serveurs on-premise et du cluster : métriques et journaux collectés par Telegraf puis Grafana Alloy via Kafka, restitués dans Microsoft Fabric et Grafana."
+        en: "Contributed to the monitoring proof of concept for on-premise servers and the cluster: metrics and logs collected by Telegraf, then Grafana Alloy, through Kafka, and surfaced in Microsoft Fabric and Grafana."
+        tags: [devops, ops]
+      - fr: "Automatisation Ansible (Semaphore) du parc on-premise, majoritairement sous RHEL 7 à 9 : collection interne de rôles réutilisables, mises à jour Java, déploiement des agents VTOM et de métriques, vérification et remédiation de CVE."
+        en: "Ansible (Semaphore) automation across the on-premise estate, mostly RHEL 7 to 9: internal collection of reusable roles, Java updates, VTOM and metrics agent rollout, CVE assessment and remediation."
         tags: [devops, linux]
-      - fr: Développement d'automatisations d'ordonnancement sous VTOM (Absyss).
-        en: Developed scheduling automations with VTOM (Absyss).
-        tags: [devops, tooling]
-      - fr: Réalisation d'audits de sécurité en boîte noire (blackbox).
-        en: Ran blackbox security audits.
+      - fr: "Pentests en boîte noire assistés par IA, puis proposition de procédure pour industrialiser ces audits avec les bons garde-fous : modèle local confiné, outils limités au périmètre, journalisation et revue humaine."
+        en: "AI-assisted blackbox penetration tests, then a proposed procedure to industrialise these audits with proper safeguards: a confined local model, tools scoped to the target, logging and human review."
+        tags: [devops, security, ia]
+      - fr: Proposition d'un cadre de gestion des secrets, avec comparatif de plateformes (Vault, Azure Key Vault, CyberArk).
+        en: Proposed a secrets management framework, with a comparison of platforms (Vault, Azure Key Vault, CyberArk).
+        tags: [devops, security, architecture]
+      - fr: "Outillage pour que Claude Code travaille sur VTOM et les serveurs sans y avoir accès : il écrit les scripts, un agent les exécute dans la session de l'intégrateur et renvoie des journaux aux secrets masqués."
+        en: "Tooling that lets Claude Code work on VTOM and the servers without direct access: it writes the scripts, an agent runs them in the integrator's session and returns logs with secrets masked."
+        tags: [ia, tooling, security]
+      - fr: Cartographie des outils IT et de leurs échanges pour l'architecte d'entreprise, générée sous forme de schéma et d'import ArchiMate (Archi).
+        en: Mapped the IT tools and their exchanges for the enterprise architect, generated as a diagram and an ArchiMate (Archi) import.
+        tags: [architecture, tooling]
+      - fr: "Conception d'une série de TP progressifs pour former un alternant au métier d'intégrateur applicatif : environnement RHEL isolé, énoncés, scripts de vérification et corrigés."
+        en: "Designed a progressive series of hands-on labs to train a work-study student as an application integrator: isolated RHEL environment, exercises, verification scripts and solutions."
+        tags: [lead, linux]
+      - fr: Cadrage de la mise à niveau du GitLab interne, puis plan de remontée sur le cluster k3s.
+        en: Scoped the upgrade of the internal GitLab, then planned its rebuild on the k3s cluster.
         tags: [devops, security]
       - fr: Déploiement de Cognos (reporting IBM).
         en: Deployed Cognos (IBM reporting).
         tags: [devops, integration]
-      - fr: Déploiement d'Outline sur AKS (Azure Kubernetes Service), en remplacement de MediaWiki.
-        en: Deployed Outline on AKS (Azure Kubernetes Service), replacing MediaWiki.
-        tags: [devops, kubernetes]
+        cv: false
+      - fr: Accompagnement de la migration de l'AS400 vers iMX côté intégration.
+        en: Support the AS400 to iMX migration on the integration side.
+        tags: [integration]
+        cv: false
 
   - id: versusmind
     position:
@@ -185,9 +218,18 @@ work:
       - fr: Architecture AWS (EC2, IAM, logs) et API Gateway devant les prestataires externes (CometChat, Stripe, OneSignal, Healthie).
         en: AWS architecture (EC2, IAM, logging) with an API Gateway in front of external providers (CometChat, Stripe, OneSignal, Healthie).
         tags: [aws, devops, backend, api]
-      - fr: Chaîne Notion vers GitHub pilotée par Claude Code. Un agent lit le ticket, pose ses questions dans Notion et ouvre une PR avec ses tests. La fusion reste validée par un humain. Ce dispositif a permis de livrer une fonctionnalité en production en une semaine.
-        en: Notion to GitHub pipeline driven by Claude Code. An agent reads the ticket, asks its questions in Notion and opens a pull request with tests. A human still approves every merge. This setup took a feature from ticket to production in one week.
+      - fr: "Chaîne de développement multi-agents (Hermes Agent), de la demande utilisateur à la pull request. Un agent principal lit le code et questionne l'utilisateur pour cerner son besoin, puis rédige un plan validé par une personne métier. Il répartit ensuite le travail entre des agents spécialisés, chacun responsable d'un seul domaine du code, qui développent en TDD dans le respect de l'architecture en place."
+        en: "Multi-agent development pipeline (Hermes Agent), from user request to pull request. A lead agent reads the code and questions the user to pin down the need, then writes a plan that a business stakeholder approves. It then splits the work between specialised agents, each owning a single area of the code, which develop with TDD within the existing architecture."
+        tags: [ia, cicd, lead, architecture]
+      - fr: Chaque PR livre ses tests, des preuves visuelles et une vidéo tutorielle pour les utilisateurs finaux. Je relis, demande des corrections ou déploie, et l'agent garde ces retours en mémoire pour les demandes suivantes.
+        en: Every pull request ships with its tests, visual evidence and a video tutorial for end users. I review, request changes or deploy, and the agent keeps that feedback in memory for later requests.
         tags: [ia, cicd, lead]
+      - fr: Correctifs automatisés pour les bugs urgents remontés par Sentry, jusqu'à l'ouverture de la PR.
+        en: Automated fixes for urgent bugs reported by Sentry, up to an opened pull request.
+        tags: [ia, ops, cicd]
+      - fr: Première version de la chaîne, de Notion vers GitHub avec Claude Code, qui a permis de livrer une fonctionnalité en production en une semaine.
+        en: First version of the pipeline, from Notion to GitHub with Claude Code, which took a feature from ticket to production in one week.
+        tags: [ia, cicd]
       - fr: "Évolution de la chaîne de déploiement : scripts Ansible, puis Kamal, puis GitHub Actions vers des instances EC2."
         en: "Deployment pipeline evolution: Ansible scripts, then Kamal, then GitHub Actions to EC2 instances."
         tags: [devops, cicd, aws]
@@ -362,22 +404,22 @@ skills:
     keywords: [TypeScript, React, Next.js, React Native, Expo, Flutter, SwiftUI, Rust / Tauri, TanStack Query, Redux Toolkit, Tailwind / NativeWind, Mantine UI]
   - id: backend
     name: { fr: Back-end, en: Back-end }
-    keywords: [Node.js, NestJS, Express, PHP, Python, "Java (Spring, Vaadin)", .NET (ASP.NET Core), REST, GraphQL, OpenAPI, RabbitMQ, Pub/Sub, PostgreSQL, MySQL, Prisma, SQLite]
+    keywords: [Node.js, NestJS, Express, PHP, Python, "Java (Spring, Vaadin)", ".NET (ASP.NET Core, Blazor)", REST, GraphQL, OpenAPI, Kafka, RabbitMQ, Pub/Sub, Tyk (APIM), PostgreSQL, MySQL, Prisma, SQLite]
   - id: cms
     name: { fr: CMS et e-commerce, en: CMS and e-commerce }
     keywords: [Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop]
   - id: devops
     name: { fr: DevOps et cloud, en: DevOps and cloud }
-    keywords: [Docker, "Kubernetes (GKE, AKS)", Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik]
+    keywords: [Docker, "Kubernetes (GKE, k3s on-premise)", Argo CD, Ansible, Semaphore, VTOM, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik]
   - id: ops
     name: { fr: Systèmes et supervision, en: Systems and monitoring }
-    keywords: [Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS]
+    keywords: [Linux (RHEL, Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Grafana Alloy, Telegraf, Microsoft Fabric, Sentry, CloudWatch, OpenVAS]
   - id: quality
     name: { fr: Tests et qualité, en: Testing and quality }
-    keywords: [Playwright, Detox, Selenium, SonarQube]
+    keywords: [TDD, Playwright, Detox, Selenium, SonarQube]
   - id: ai
     name: { fr: IA appliquée, en: Applied AI }
-    keywords: [Claude Code, AI agents, MCP, Ollama, LLM orchestration]
+    keywords: [Claude Code, Hermes Agent, AI agents, MCP, Ollama, LLM orchestration]
 
 languages:
   - language: { fr: Français, en: French }
