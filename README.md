@@ -32,8 +32,8 @@ What defines me most is adaptability: I pick up whichever language, framework an
 - **CMS and e-commerce**: Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
 - **DevOps and cloud**: Docker, Kubernetes (GKE, AKS), Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
 - **Systems and monitoring**: Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS
-- **Testing and quality**: Playwright, Detox, Selenium, SonarQube
-- **Applied AI**: Claude Code, AI agents, MCP, Ollama, LLM orchestration
+- **Testing and quality**: TDD, Playwright, Detox, Selenium, SonarQube
+- **Applied AI**: Claude Code, Hermes Agent, AI agents, MCP, Ollama, LLM orchestration
 
 #### Side projects
 
@@ -94,8 +94,8 @@ Ce qui me caractérise le plus, c'est l'adaptation : je prends le langage, le fr
 - **CMS et e-commerce** : Sitecore XP / SXA, Payload CMS, WordPress, PrestaShop
 - **DevOps et cloud** : Docker, Kubernetes (GKE, AKS), Argo CD, Ansible, Kamal, GitHub Actions, GitLab CI, Jenkins, Bitbucket Pipelines, Azure Pipelines, AWS, Azure, Google Cloud, OVH, OpenStack, Cloudflare, Traefik
 - **Systèmes et supervision** : Linux (Debian), Bash, OpenVPN, Tailscale, ELK, Loki / Grafana, Telegraf, Sentry, CloudWatch, OpenVAS
-- **Tests et qualité** : Playwright, Detox, Selenium, SonarQube
-- **IA appliquée** : Claude Code, AI agents, MCP, Ollama, LLM orchestration
+- **Tests et qualité** : TDD, Playwright, Detox, Selenium, SonarQube
+- **IA appliquée** : Claude Code, Hermes Agent, AI agents, MCP, Ollama, LLM orchestration
 
 #### Projets perso
 
