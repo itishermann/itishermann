@@ -212,6 +212,9 @@ work:
         back office, landing page, infrastructure and data. The app has grown
         past 300 daily active users.
     highlights:
+      - fr: Backend, backoffice, landing page et application mobile en architecture hexagonale, développés avec Claude Code.
+        en: Backend, back office, landing page and mobile app built on a hexagonal architecture, developed with Claude Code.
+        tags: [architecture, ia, backend, mobile, lead]
       - fr: Application React Native (Expo) avec OneSignal, CometChat, Google Calendar et l'intégration de Healthie, fournisseur de données de santé.
         en: React Native (Expo) app with OneSignal, CometChat, Google Calendar and an integration with Healthie, a health data provider.
         tags: [mobile, react-native]
