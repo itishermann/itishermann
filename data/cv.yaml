@@ -100,6 +100,9 @@ work:
       - fr: Résolution d'incidents et de bugs sur iMX et les flux d'intégration, dont l'analyse de lenteurs d'API rejouées en recette avec compte rendu à l'éditeur.
         en: Incident and bug resolution on iMX and integration flows, including API slowness investigations replayed in a test environment and reported to the vendor.
         tags: [integration, ops]
+      - fr: "Tests automatisés Playwright du portail partenaires d'iMX : navigation, consultation des demandes, exports, et mesure des temps de réponse de l'API sous charge simultanée."
+        en: "Automated Playwright tests for the iMX partner portal: navigation, request lookup, exports, and API response-time measurement under concurrent load."
+        tags: [integration, cicd, web]
       - fr: "Refonte de l'interface du portail de soumission et de suivi des CRA des prestataires externes, avec Claude Code : signature manuscrite du manager dans le navigateur, authentification Windows (.NET, Blazor, Oracle)."
         en: "Redesigned the interface of the portal where external contractors submit and track their activity reports, with Claude Code: manager handwritten signature in the browser, Windows authentication (.NET, Blazor, Oracle)."
         tags: [web, dotnet, ia]
@@ -124,6 +127,9 @@ work:
       - fr: Cartographie des outils IT et de leurs échanges pour l'architecte d'entreprise, générée sous forme de schéma et d'import ArchiMate (Archi).
         en: Mapped the IT tools and their exchanges for the enterprise architect, generated as a diagram and an ArchiMate (Archi) import.
         tags: [architecture, tooling]
+      - fr: "Conception d'une série de TP progressifs pour former un alternant au métier d'intégrateur applicatif : environnement RHEL isolé, énoncés, scripts de vérification et corrigés."
+        en: "Designed a progressive series of hands-on labs to train a work-study student as an application integrator: isolated RHEL environment, exercises, verification scripts and solutions."
+        tags: [lead, linux]
       - fr: Cadrage de la mise à niveau du GitLab interne, puis plan de remontée sur le cluster k3s.
         en: Scoped the upgrade of the internal GitLab, then planned its rebuild on the k3s cluster.
         tags: [devops, security]
